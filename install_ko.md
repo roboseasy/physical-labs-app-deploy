@@ -15,29 +15,29 @@ Roboseasy Studio 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 1
 | 디스크 공간 | 약 5GB (가상환경 포함) |
 | 권한 | 설치 시 sudo 필요. 모터 USB 사용 시 dialout 그룹 |
 
-> ⚠️ Ubuntu 22.04 는 미지원입니다. lerobot 0.5.1 이 Python ≥3.12 를 요구하는데 22.04 의 기본 python 은 3.10 입니다.
+> ⚠️ Ubuntu 22.04 는 미지원입니다. lerobot 0.6.0 이 Python ≥3.12 를 요구하는데 22.04 의 기본 python 은 3.10 입니다.
 
 ## 3. 다운로드
 
-[GitHub Releases 페이지](https://github.com/roboseasy-members/roboseasy-studio/releases) 에서 최신 `.deb` 파일을 받습니다. 또는 명령으로:
+[GitHub Releases 페이지](https://github.com/roboseasy/roboseasy-studio-deploy/releases) 에서 최신 `.deb` 파일을 받습니다. 또는 명령으로:
 
 ```bash
-# 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
-wget https://github.com/roboseasy-members/roboseasy-studio/releases/download/v0.5.1-0.0.1/roboseasy-studio_0.5.1-0.0.1_amd64.deb
+# 최신 release 의 파일명을 확인 후 (예: v0.6.0-0.0.1)
+wget https://github.com/roboseasy/roboseasy-studio-deploy/releases/download/v0.6.0-0.0.1/roboseasy-studio_0.6.0-0.0.1_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy-members/roboseasy-studio/releases/download/v0.5.1-0.0.1/roboseasy-studio_0.5.1-0.0.1_amd64.deb.sha256
-sha256sum -c roboseasy-studio_0.5.1-0.0.1_amd64.deb.sha256
+wget https://github.com/roboseasy/roboseasy-studio-deploy/releases/download/v0.6.0-0.0.1/roboseasy-studio_0.6.0-0.0.1_amd64.deb.sha256
+sha256sum -c roboseasy-studio_0.6.0-0.0.1_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./roboseasy-studio_0.5.1-0.0.1_amd64.deb
+sudo apt install ./roboseasy-studio_0.6.0-0.0.1_amd64.deb
 ```
 
 설치 단계에서 다음이 일어납니다:
@@ -74,10 +74,10 @@ roboseasy-studio
 
 ## 7. 업데이트
 
-새 버전이 [GitHub Releases](https://github.com/roboseasy-members/roboseasy-studio/releases) 에 올라오면:
+새 버전이 [GitHub Releases](https://github.com/roboseasy/roboseasy-studio-deploy/releases) 에 올라오면:
 
 ```bash
-wget https://github.com/roboseasy-members/roboseasy-studio/releases/download/<새버전>/roboseasy-studio_<새버전>_amd64.deb
+wget https://github.com/roboseasy/roboseasy-studio-deploy/releases/download/<새버전>/roboseasy-studio_<새버전>_amd64.deb
 sudo apt install --reinstall ./roboseasy-studio_<새버전>_amd64.deb
 ```
 
