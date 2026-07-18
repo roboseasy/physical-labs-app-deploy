@@ -26,6 +26,7 @@ sudo apt install ./roboseasy-studio_0.6.0-0.0.1_amd64.deb
 - **LeRobot 0.6.0 전환** — 런타임을 `lerobot[feetech,kinematics,dataset]==0.6.0` 으로 업그레이드 (0.6.0 의 임포트 경로 변경 대응 포함)
 - **GR00T N1.7 전환** — N1.5 시절의 flash-attn 수동 빌드·PR#3182 cherry-pick 절차 제거. `lerobot[groot]==0.6.0` 설치만으로 GR00T 학습 준비 완료
 - SmolVLA / X-VLA 의존성 설치를 0.6.0 핀으로 정렬 — 설치 버튼이 lerobot 을 구버전으로 다운그레이드하던 문제 예방
+- **설치 안정화 (.deb 재빌드)** — pandas/numpy/pyarrow 를 wheel 로만 설치하도록 고정해, 첫 설치 시 py3.12 wheel 없는 구버전 pandas sdist 소스 빌드로 pip 가 죽던 문제 차단
 - 데이터셋 포맷은 v3.0 그대로 — 기존 수집 데이터 변환 불필요
 
 ## 시스템 요구사항
@@ -54,7 +55,7 @@ sha256sum -c roboseasy-studio_0.6.0-0.0.1_amd64.deb.sha256
 ### 체크섬
 
 - `.exe` SHA256: `f9adff14f3b211ede8c66e3621ff7c0ea076bfc71946e1219d566621b921f9d8`
-- `.deb` SHA256: `94150f32625eaa47bf8b1779538e1cbc866e6a40d78fc684a2dffeefe7a844a5`
+- `.deb` SHA256: `7d739679c8ee8c32b5a65b645cbbdf04355e6421bc7a1e58bd1a5f292026b7b5`
 
 ---
 
