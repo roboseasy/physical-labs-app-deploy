@@ -23,6 +23,11 @@ sudo apt install ./roboseasy-studio_0.6.0-0.0.1_amd64.deb
 
 ## 변경 사항 (v0.5.1 → v0.6.0)
 
+- **버그·UX 수정 (.deb 재빌드, 2026-07-21)**
+  - 텔레옵·추론·EEF·수집 연결 시 `EOFError: EOF when reading a line` 차단 — lerobot 0.6.0 이 미보정 상태에서 띄우던 콘솔 입력 프롬프트를 GUI 에서 자동 처리(저장된 보정값 자동 적용, 없으면 칼리브레이션 안내)
+  - 탭·섹션 전환 시 로봇 시리얼·카메라 포트가 해제되지 않아 다음 화면에서 "포트 사용중" 오류가 나던 문제 수정
+  - 칼리브레이션 3D 뷰어가 창을 키워도 커지지 않던 문제 수정
+  - 사용자별 화면 해상도·배율(125/150%)에서 창이 화면을 넘던 문제 완화(창 최소 크기 화면 비율 클램프)
 - **LeRobot 0.6.0 전환** — 런타임을 `lerobot[feetech,kinematics,dataset]==0.6.0` 으로 업그레이드 (0.6.0 의 임포트 경로 변경 대응 포함)
 - **GR00T N1.7 전환** — N1.5 시절의 flash-attn 수동 빌드·PR#3182 cherry-pick 절차 제거. `lerobot[groot]==0.6.0` 설치만으로 GR00T 학습 준비 완료
 - SmolVLA / X-VLA 의존성 설치를 0.6.0 핀으로 정렬 — 설치 버튼이 lerobot 을 구버전으로 다운그레이드하던 문제 예방
@@ -55,7 +60,7 @@ sha256sum -c roboseasy-studio_0.6.0-0.0.1_amd64.deb.sha256
 ### 체크섬
 
 - `.exe` SHA256: `f9adff14f3b211ede8c66e3621ff7c0ea076bfc71946e1219d566621b921f9d8`
-- `.deb` SHA256: `7d739679c8ee8c32b5a65b645cbbdf04355e6421bc7a1e58bd1a5f292026b7b5`
+- `.deb` SHA256: `0de3f9c38deec8b01460d4f122c9377337903b1d90d40e56a96f822114718292`
 
 ---
 
