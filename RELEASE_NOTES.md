@@ -55,6 +55,7 @@ Windows 인스톨러는 다음 재빌드에서 `physical-labs` 이름으로 제�
 - 패키지 `physical-labs`, 실행 명령 `physical-labs`, 설치 경로 `/opt/physical-labs`
 - 설정 디렉토리 `~/.config/PhysicalLabs`, 캐시 `~/.cache/physical-labs`
 - 창 제목·GNOME 런처 표시명 **Physical Labs**
+- 이용약관·개인정보처리방침의 제품명도 **Physical Labs** 로 갱신 (동의 버전은 그대로라 재동의 불필요)
 - 유저 데이터 자동 이관 (원본 비삭제·멱등)
 
 ### 새 로봇 생성 기종 개편
@@ -93,7 +94,7 @@ Windows 인스톨러는 다음 재빌드에서 `physical-labs` 이름으로 제�
 sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 ```
 
-- `.deb` SHA256: `6a28608f954d1defb7b97d95f0b067523db19af1723b6a54f8cfd4f642da7a81`
+- `.deb` SHA256: `6bcf67891ddffcfc2df961ae7afb7efd03ba0741ec86d2037a3537d3bbdd9060`
 
 ---
 
