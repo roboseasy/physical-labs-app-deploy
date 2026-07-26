@@ -97,17 +97,10 @@ sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 
 ---
 
-## 이전 제품(Roboseasy Studio) 릴리즈에 대해
+## 이전 제품(Roboseasy Studio) 릴리즈
 
-Physical Labs 로 리네임하면서 구 제품명으로 배포됐던 릴리즈
-(`v0.6.0-0.0.1` · `v0.5.1-0.0.1`)는 **정리했습니다**. 해당 버전을 쓰고 계셨다면
-위 설치 명령으로 바로 업그레이드하시면 됩니다.
+제품이 **Physical Labs** 로 전환되면서 구 제품명으로 배포됐던 릴리즈와 산출물은
+모두 정리했습니다. 앞으로는 `physical-labs` 만 배포합니다.
 
-구 산출물이 필요한 경우 이 저장소의 git 히스토리에서 받을 수 있습니다:
-
-```bash
-git clone https://github.com/roboseasy/physical-labs-app-deploy
-cd physical-labs-app-deploy
-git log --all --oneline -- linux/dist window/dist   # 해당 커밋 확인
-git checkout <commit> -- linux/dist window/dist
-```
+구 버전을 쓰고 계셨다면 위 설치 명령으로 바로 업그레이드하시면 되고,
+사용자 데이터는 첫 실행 시 자동 이관됩니다.
