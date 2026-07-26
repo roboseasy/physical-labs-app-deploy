@@ -80,6 +80,12 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 - **의존성 설치 버튼이 `.deb` 환경에서 항상 실패하던 문제** — 설치 위치(`/opt/physical-labs/venv`)가
   관리자 소유라 권한 오류가 나던 것. 이제 시스템 비밀번호를 한 번 입력하면 설치됩니다
 - **훈련 > 환경 진단의 패키지 설치 버튼이 눌리지 않던 문제** (Flash Attention / Accelerate / Wandb)
+- **새 학습이 `FileExistsError` 로 시작되지 않던 문제** — 앱이 출력 폴더를 미리 만들어
+  lerobot 이 거부하던 것. 폴더를 지우고 다시 눌러도 재발했습니다
+- **학습 결과 저장 위치를 `~/.PhysicalLabs/outputs/train` 으로 고정** — 이전에는 앱을
+  실행한 위치에 따라 결과물이 흩어지고 '학습 재개' 가 이전 학습을 못 찾았습니다.
+  기존 위치의 학습도 재개 목록에 계속 표시됩니다
+- 학습 경과·남은 시간이 1시간을 넘으면 `시:분:초` 로 표기 (이전에는 `183:20` 처럼 표시)
 - 설치 마지막 안내가 이미 `dialout` 그룹에 있는 사용자에게도 '실패' 처럼 보이던 문구 수정
 - 엔드이펙터 기본 탭이 XYZ Control 로 열리던 문제 → **Joint Control** 로 변경
 - 텔레오퍼레이션에서 Follower/Leader 포트가 **둘 다 같은 포트**로 잡히던 문제
@@ -124,7 +130,7 @@ sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 Get-FileHash physical-labs-setup_0.6.0-0.0.1_win64.exe -Algorithm SHA256
 ```
 
-- `.deb` SHA256: `7dff7018586d52f90e272c6e66d1f797658d77ed3581cebaebcd5f39cb188729`
+- `.deb` SHA256: `5d819dc548af2294505d514cea3470037e7b683e2089db81e492cc722df36d4c`
 - `.exe` SHA256: `dd3d4949c1db30d276500a01172db031eb043f3e7c647fa42fbcf7ba5bfe743b`
 
 ---
