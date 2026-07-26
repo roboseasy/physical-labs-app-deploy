@@ -22,22 +22,22 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 [GitHub Releases 페이지](https://github.com/roboseasy/physical-labs-app-deploy/releases) 에서 최신 `.deb` 파일을 받습니다. 또는 명령으로:
 
 ```bash
-# 최신 release 의 파일명을 확인 후 (예: v0.6.0-0.0.2)
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.2/physical-labs_0.6.0-0.0.2_amd64.deb
+# 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.1/physical-labs_0.6.0-0.0.1_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.2/physical-labs_0.6.0-0.0.2_amd64.deb.sha256
-sha256sum -c physical-labs_0.6.0-0.0.2_amd64.deb.sha256
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.1/physical-labs_0.6.0-0.0.1_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./physical-labs_0.6.0-0.0.2_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 ```
 
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
