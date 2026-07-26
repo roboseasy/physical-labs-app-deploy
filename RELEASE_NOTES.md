@@ -59,10 +59,24 @@ Windows 인스톨러는 다음 재빌드에서 `physical-labs` 이름으로 제�
 - 유저 데이터 자동 이관 (원본 비삭제·멱등)
 
 ### 새 로봇 생성 기종 개편
-- **SO-101 / SO-102 / Lekiwi / reBot / Dual SO-101 / Dual SO-102** 6종으로 재구성
+- **SO-101 / SO-102(7 DoF) / Lekiwi / reBot(7 DoF) / Dual SO-101 / Dual SO-102** 6종으로 재구성
 - 현재 선택 가능한 기종은 **SO-101** 이며, 나머지는 "준비 중" 표시
 
+### 로봇 불러오기 속도 대폭 개선
+- 로봇 선택 후 워크플로우 진입이 **약 6초 → 1초 내외**로 단축
+  - 엔드이펙터·텔레오퍼레이션이 **같은 URDF 를 각각 파싱**하던 중복 제거 (kinematics 공유)
+  - URDF 파싱을 앱 시작 직후 백그라운드로 이동
+  - 7개 탭을 한꺼번에 만들던 것을 **해당 탭을 처음 열 때** 만들도록 변경
+- **"로봇을 불러오는 중입니다" 안내 창** 추가 — 진입·탭 최초 열기 시 표시
+
 ### 버그 수정
+- **훈련 > 환경 진단의 패키지 설치 버튼이 동작하지 않던 문제** (Flash Attention / Accelerate / Wandb)
+- 엔드이펙터 기본 탭이 XYZ Control 로 열리던 문제 → **Joint Control** 로 변경
+- 텔레오퍼레이션에서 Follower/Leader 포트가 **둘 다 같은 포트**로 잡히던 문제
+  → '포트 고정하기' 심볼릭 링크를 우선 사용해 재부팅 후에도 좌우가 뒤바뀌지 않음
+- 텔레오퍼레이션 Sim Control 진입 시 연결 버튼이 잘려 보이던 문제
+- GR00T 모델 카드가 삭제된 N1.5 를 안내하던 문제 → **NVIDIA GROOT** 표기로 변경
+- '+ New robot' 버튼 한글화 → **'+ 로봇 추가'**
 - GNOME 독 아이콘 매칭 수정 — `.desktop` 파일명과 앱의 desktop file name 불일치 해소
 - 작업표시줄 고정 유지(Windows) — AppUserModelID 에서 버전 세그먼트 제거
 
@@ -94,7 +108,7 @@ Windows 인스톨러는 다음 재빌드에서 `physical-labs` 이름으로 제�
 sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 ```
 
-- `.deb` SHA256: `6bcf67891ddffcfc2df961ae7afb7efd03ba0741ec86d2037a3537d3bbdd9060`
+- `.deb` SHA256: `58084a99698515a0b006c860c30d88b09d18b81770a4573a94622ca9cdd08e49`
 
 ---
 
