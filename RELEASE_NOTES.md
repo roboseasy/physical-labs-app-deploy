@@ -1,6 +1,6 @@
 # Physical Labs v0.6.0-0.0.1
 
-LeRobot **0.6.0** 기반. **Physical Labs 의 첫 릴리즈**입니다.
+LeRobot **0.6.0** 기반. **Physical Labs 의 첫 릴리즈**입니다. Windows / Ubuntu 모두 지원.
 
 > ## 📛 Roboseasy Studio 에서 이름이 바뀌었습니다
 >
@@ -23,10 +23,14 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 > 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
 > `apt` 를 쓰면 구 패키지 제거까지 한 번에 처리됩니다.
 
-## Windows
+## 빠른 설치 — Windows 10/11 (64-bit)
 
-이번 릴리즈는 **Linux .deb 만** 포함합니다.
-Windows 인스톨러는 다음 재빌드에서 `physical-labs` 이름으로 제공될 예정입니다.
+1. [physical-labs-setup_0.6.0-0.0.1_win64.exe](https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.1/physical-labs-setup_0.6.0-0.0.1_win64.exe) 다운로드 (~38 MB)
+2. 더블클릭 → SmartScreen "추가 정보" → "실행"
+3. 설치 마법사 진행 (5~30분, 인터넷 연결 필수)
+
+> 아래 "주요 변경 사항" 의 성능·버그 수정 항목은 **Linux .deb 기준**입니다.
+> Windows 인스톨러는 별도 빌드라 반영 범위가 다를 수 있습니다.
 
 ## 업그레이드 (기존 `roboseasy-studio` 사용자)
 
@@ -105,10 +109,17 @@ Windows 인스톨러는 다음 재빌드에서 `physical-labs` 이름으로 제�
 ## 무결성 검증
 
 ```bash
+# Linux
 sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 ```
 
+```powershell
+# Windows (PowerShell)
+Get-FileHash physical-labs-setup_0.6.0-0.0.1_win64.exe -Algorithm SHA256
+```
+
 - `.deb` SHA256: `58084a99698515a0b006c860c30d88b09d18b81770a4573a94622ca9cdd08e49`
+- `.exe` SHA256: `dd3d4949c1db30d276500a01172db031eb043f3e7c647fa42fbcf7ba5bfe743b`
 
 ---
 

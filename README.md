@@ -8,6 +8,6 @@
 설치 파일(.deb, .exe)은 [Releases](https://github.com/roboseasy/physical-labs-app-deploy/releases) 페이지에서 다운로드할 수 있습니다.
 
 - Ubuntu 24.04+: `.deb` 패키지
-- Windows: 다음 재빌드에서 `physical-labs` 이름으로 제공 예정
+- Windows 10/11: `.exe` 인스톨러
 
 설치 가이드: [install_ko.md](install_ko.md)
