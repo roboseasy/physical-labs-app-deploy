@@ -29,6 +29,14 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 2. 더블클릭 → SmartScreen "추가 정보" → "실행"
 3. 설치 마법사 진행 (5~30분, 인터넷 연결 필수)
 
+> ℹ️ **Windows 인스톨러는 2026-07-30 재빌드가 최신입니다.**
+> **Anaconda/miniconda 등 Python 3.14 가 설치된 PC 에서 설치가 실패하던 문제**를
+> 해결했습니다. 설치 마지막 단계에서
+> `No matching distribution found for numpy<2.3.0,>=2.0.0` 로 멈추던 증상입니다.
+> 이제 PC 의 Python 이 **64-bit 3.12 / 3.13** 이 아니면 동봉된 Python 3.12 를
+> 자동 설치해 사용하며, 앞선 설치가 실패한 PC 에서 그대로 다시 실행해도
+> 정상 복구됩니다. 이전에 받으셨다면 다시 받아 설치하세요.
+
 > 아래 "주요 변경 사항" 의 성능·버그 수정 항목은 **Linux .deb 기준**입니다.
 > Windows 인스톨러는 별도 빌드라 반영 범위가 다를 수 있습니다.
 
@@ -123,6 +131,13 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 | 인터넷 | 첫 설치 시 필수 (lerobot/torch 2~3GB 다운로드) |
 | 디스크 | ~5GB |
 
+| 항목 | Windows |
+|------|---------|
+| OS | Windows 11 64-bit (10 은 동작 가능하나 미검증) |
+| Python | **64-bit 3.12 / 3.13** — 없거나 범위 밖(3.11 이하·3.14 이상)이면 동봉 Python 3.12 를 자동 설치해 사용 |
+| 인터넷 | 첫 설치 시 필수 (lerobot/torch 1~2GB 다운로드) |
+| 디스크 | ~5GB |
+
 ## 무결성 검증
 
 ```bash
@@ -136,7 +151,8 @@ Get-FileHash physical-labs-setup_0.6.0-0.0.1_win64.exe -Algorithm SHA256
 ```
 
 - `.deb` SHA256: `acfaadf5fce83080899bc8b710502d565eaf2cd55157e2fde6260d9e6cd98f5c`
-- `.exe` SHA256: `dd3d4949c1db30d276500a01172db031eb043f3e7c647fa42fbcf7ba5bfe743b`
+- `.exe` SHA256: `55c785c2f7722b00d14ea698e248b1d97eac42c00ac15d2edf5b198042c7a33d`
+  (2026-07-30 재빌드)
 
 ---
 
