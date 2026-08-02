@@ -29,13 +29,14 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 2. 더블클릭 → SmartScreen "추가 정보" → "실행"
 3. 설치 마법사 진행 (5~30분, 인터넷 연결 필수)
 
-> ℹ️ **Windows 인스톨러는 2026-07-30 재빌드가 최신입니다.**
-> **Anaconda/miniconda 등 Python 3.14 가 설치된 PC 에서 설치가 실패하던 문제**를
-> 해결했습니다. 설치 마지막 단계에서
-> `No matching distribution found for numpy<2.3.0,>=2.0.0` 로 멈추던 증상입니다.
-> 이제 PC 의 Python 이 **64-bit 3.12 / 3.13** 이 아니면 동봉된 Python 3.12 를
-> 자동 설치해 사용하며, 앞선 설치가 실패한 PC 에서 그대로 다시 실행해도
-> 정상 복구됩니다. 이전에 받으셨다면 다시 받아 설치하세요.
+> ℹ️ **Windows 인스톨러는 2026-08-02 재빌드가 최신입니다.**
+> **보정(캘리브레이션) 실패 시 어떤 모터가 문제인지 알려줍니다.** Physical Labs 로
+> ID 셋업(중앙 정렬)을 하지 않은 SO-ARM 을 보정할 때 `Magnitude 2555 exceeds 2047`
+> 같은 오류만 뜨고 원인을 알 수 없던 것을, 범위를 벗어난 모터의 번호·현재 위치와
+> 해결 방법('ID 셋업' 에서 해당 모터 재셋업)을 안내하도록 개선했습니다.
+> (2026-07-30 재빌드 포함분: **Python 3.14 가 설치된 PC 에서 설치가 실패하던 문제**
+> 해결 — PC 의 Python 이 64-bit 3.12/3.13 이 아니면 동봉 Python 3.12 를 자동 설치.)
+> 이전에 받으셨다면 다시 받아 설치하세요.
 
 > 아래 "주요 변경 사항" 의 성능·버그 수정 항목은 **Linux .deb 기준**입니다.
 > Windows 인스톨러는 별도 빌드라 반영 범위가 다를 수 있습니다.
@@ -151,8 +152,8 @@ Get-FileHash physical-labs-setup_0.6.0-0.0.1_win64.exe -Algorithm SHA256
 ```
 
 - `.deb` SHA256: `acfaadf5fce83080899bc8b710502d565eaf2cd55157e2fde6260d9e6cd98f5c`
-- `.exe` SHA256: `55c785c2f7722b00d14ea698e248b1d97eac42c00ac15d2edf5b198042c7a33d`
-  (2026-07-30 재빌드)
+- `.exe` SHA256: `0ed0fd1d2bc88c64d8500980245ed05d22bbe0f97facd8d9e25564e54756b9b7`
+  (2026-08-02 재빌드)
 
 ---
 
