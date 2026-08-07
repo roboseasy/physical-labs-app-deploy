@@ -19,6 +19,10 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 
 설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
 
+> ⚠️ **이미 설치돼 있다면 `--reinstall` 이 필요합니다.**
+> 버전 번호(`0.6.0-0.0.1`)가 그대로라 `apt` 가 "최신 버전" 으로 보고 건너뜁니다.
+> `sudo apt install --reinstall ./physical-labs_0.6.0-0.0.1_amd64.deb`
+
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
 > 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
 > `apt` 를 쓰면 구 패키지 제거까지 한 번에 처리됩니다.
@@ -29,7 +33,15 @@ sudo apt install ./physical-labs_0.6.0-0.0.1_amd64.deb
 2. 더블클릭 → SmartScreen "추가 정보" → "실행"
 3. 설치 마법사 진행 (5~30분, 인터넷 연결 필수)
 
-> ℹ️ **Windows 인스톨러·Linux `.deb` 모두 2026-08-04 재빌드가 최신입니다.**
+> ℹ️ **Linux `.deb` 는 2026-08-07, Windows 인스톨러는 2026-08-04 재빌드가 최신입니다.**
+> **(2026-08-07 · Linux 전용) LeKiwi 로봇 전 과정 지원** — 모바일 베이스 로봇 LeKiwi 로
+> 텔레오퍼레이션 · 모션 녹화/재생 · 데이터 수집 · 데이터 편집 · 학습 · 추론을 모두 앱에서
+> 할 수 있습니다. 팔은 SO-101 수업과 동일하게 다루며 **바퀴 주행은 포함하지 않습니다**
+> (안전상 항상 정지 고정). 함께 고친 것: 앱에서 **학습한 모델이 추론 탭에 안 뜨던 문제**
+> (전 기종), 체크포인트가 목록에서 전부 같은 이름으로 보이던 문제, 정책·로봇 불일치를
+> 모델 선택 시점에 차단, 추론 정지 시 팔이 시작 자세로 천천히 복귀.
+> **⚠️ 추론 탭은 실험적입니다** — 로봇이 사람 조작 없이 스스로 움직이므로 처음에는
+> 로봇 주변을 비우고 [정지] 에 손을 두고 시작하세요.
 > **로그인 사용자 기록 백엔드(Supabase) 교체 반영** — 서버 데이터베이스 교체로
 > 이전 빌드는 로그인 시 사용자 정보(이름·이메일) 기록이 서버에 저장되지 않았습니다
 > (앱 사용에는 영향 없음). 이번 빌드부터 정상 기록됩니다.
@@ -153,8 +165,8 @@ sha256sum -c physical-labs_0.6.0-0.0.1_amd64.deb.sha256
 Get-FileHash physical-labs-setup_0.6.0-0.0.1_win64.exe -Algorithm SHA256
 ```
 
-- `.deb` SHA256: `be029593a20ede7c3444418b27ad1ff755824ddff78b4ce8f93953ad08586a8c`
-  (2026-08-04 재빌드)
+- `.deb` SHA256: `dddc73e5b1c201cbeaf76de78baae04f4b18f07cae0b91988655ea0c0adca224`
+  (2026-08-07 재빌드)
 - `.exe` SHA256: `650b0a75dc7661bfc4a37d21366b02443a116974291044016a29d1048749d3a2`
   (2026-08-04 재빌드)
 
