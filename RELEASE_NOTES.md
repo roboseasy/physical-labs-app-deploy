@@ -1,3 +1,92 @@
+# Physical Labs v0.6.0-0.0.9 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.8)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.9/physical-labs_0.6.0-0.0.9_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.9_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.1 · 2026-08-07 재빌드 대비)
+
+### 🛞 LeKiwi 바퀴(모바일 베이스) 주행 — 이제 앱에서 굴립니다
+
+이전 릴리즈는 LeKiwi 의 바퀴를 **항상 정지**로 고정했습니다. 이번 릴리즈부터 키보드로 몹니다.
+
+| 화면 | 전진 / 후진 | 좌 / 우 이동 | 제자리 좌회전 / 우회전 | 속도 |
+|---|---|---|---|---|
+| 텔레오퍼레이션 | `W` / `S` | `A` / `D` | `Q` / `E` | `R` / `F` (느림·보통·빠름) |
+| 엔드이펙터 | `↑` / `↓` | `←` / `→` | `Shift+←` / `Shift+→` | 느림 고정 |
+
+- 사용법은 각 화면에 **글자로 표시**됩니다 (텔레옵: 3D 뷰 아래 상태줄, 엔드이펙터: 연결 바 아래).
+- 텔레오퍼레이션은 **Real Control 탭에서 연결했을 때만** 실제 바퀴가 굴러가고, Sim Control 에서는
+  3D 화면에서만 움직입니다. 엔드이펙터는 연결 직후부터(Sync 확인 전에도) 굴릴 수 있습니다.
+- 3D 화면의 로봇도 베이스가 같이 이동하고 옴니휠이 돌아갑니다.
+- 안전 장치: 키를 떼면 즉시 정지, 창이 비활성화되거나 탭을 바꾸거나 화면이 숨겨지면 강제 정지,
+  로봇 쪽에서도 0.5 초 안에 명령이 끊기면 스스로 멈춥니다. 녹화 이름 같은 글자 입력 칸에 커서가
+  있을 때는 키가 로봇으로 가지 않습니다.
+
+### 🎞 Motion Record / Replay 가 바퀴까지 기록·재생
+
+텔레오퍼레이션과 엔드이펙터의 모션 녹화에 바퀴 속도가 함께 저장되고, 리플레이 때 그대로 재생됩니다.
+Real 재생 시 파일에 바퀴 주행이 들어 있으면 경고창에 **"로봇이 이동합니다"** 가 표시됩니다.
+예전 녹화 파일은 그대로 팔만 움직입니다. 저장되는 것은 속도 지령이라 바닥·배터리 상태에 따라
+경로가 조금 달라질 수 있습니다.
+
+### 그 밖의 LeKiwi 개선
+
+- **3D 화면에 옴니 베이스까지 그립니다** — 이전에는 팔만 떠 있었습니다. 캘리브레이션·엔드이펙터·
+  텔레오퍼레이션·데이터·추론 전 화면 적용. 리더 암은 그대로 SO-101 팔로 표시됩니다.
+- **캘리브레이션 탭에 [🔓 토크 해제] 버튼** — 원격 팔로워(LeKiwi)의 팔 토크를 앱에서 풉니다
+  (바퀴는 건드리지 않음). 다시 켜려면 호스트를 실행하세요.
+- **LeKiwi 추론 탭** 지원.
+
+### 학습 탭
+
+- **새 학습 탭** 추가.
+- `lerobot[training]` 이 설치되지 않은 환경에서는 새 학습·학습 재개 탭 진입을 막고 설치 안내를
+  띄웁니다. 환경 진단의 Accelerate 카드 표기도 `lerobot[training]` 으로 통일했습니다.
+
+## 시스템 요구사항
+
+- Ubuntu 24.04 LTS, Python 3.12+
+- 인터넷 연결 (첫 설치 시 lerobot/torch 등 1~2GB 다운로드), 디스크 여유 ~5GB
+
+## 무결성 검증
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.9/physical-labs_0.6.0-0.0.9_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.9_amd64.deb.sha256
+```
+
+SHA256: `a5c4b446367c12c1651085da471a1810ec68adc9abb1f3c1c82cbd843028c9fb`
+
+## 커밋 로그 (2026-08-07 Linux 재빌드 이후, physical-labs-app main)
+
+- 9d78cef Release: VERSION 0.0.1 → 0.0.9
+- 89b777b Add: lekiw 이동 모션도 저장 및 리플레이
+- a33d542 Add: Lekiwi 키보드 이동 제어
+- 5e78264 Fix: Lekiwi
+- 45c23d8 Add: Lekiwi 칼리브레이션 토크 off 버튼 기능 추가
+- ff6e73d ADD: lerobot[training] 미설치 시 새 학습·학습 재개 탭 진입 차단
+- 3cf1317 UPDATE: 환경 진단의 Accelerate 카드 표기를 lerobot[training] 으로
+- 4f31e9c Add: Lekiwi Inference
+- 92ac57d Add: train tap
+- e0c825b, 36be047 Add: Lekiwi Teleoperation
+
+---
+
 # Physical Labs v0.6.0-0.0.1
 
 LeRobot **0.6.0** 기반. **Physical Labs 의 첫 릴리즈**입니다. Windows / Ubuntu 모두 지원.
