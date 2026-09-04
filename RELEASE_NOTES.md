@@ -1,3 +1,74 @@
+# Physical Labs v0.6.0-0.0.10 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.8)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.10/physical-labs_0.6.0-0.0.10_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.10_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1 / 0.0.9)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.9 대비)
+
+### 📶 LeKiwi 로봇 와이파이 설정 — 터미널 없이 앱에서
+
+지금까지 LeKiwi(Pi) 를 와이파이에 붙이려면 SSH 로 들어가 `wifi <SSID> <비밀번호>`, `setip N` 을
+직접 쳐야 했습니다. 이제 **로봇 설정 > 2. Lekiwi (원격)** 의 `[📶 와이파이 설정…]` 버튼 하나로
+PC 에서 와이파이 고르듯 처리합니다.
+
+1. **스캔·선택** — 로봇 주변 와이파이를 신호 세기·대역(2.4/5GHz)·보안과 함께 표시. 개방/WEP 망은 회색(미지원).
+2. **비밀번호 입력 → 적용** — 로봇이 새 와이파이로 옮겨 가는 동안 앱이 기다렸다가 **실제로 붙었는지**(SSID·IP) 확인합니다.
+   비밀번호가 틀리면 "붙지 못했다" 로 알려 줍니다.
+3. **고정 IP 확인** — 킷 번호(N)의 `192.168.0.20N` 이 아니면 `[고정 IP 설정]` 으로 이어서 맞춥니다 (Pi 의 `setip`).
+4. **와이파이로 전환** — 성공하면 한 번의 클릭으로 연결 방식·로봇 IP 가 갱신됩니다. 이후 `[연결 확인]` → `[▶ 호스트 실행]` 은 그대로.
+
+권장 순서: **이더넷 직결 → 와이파이 설정 → 고정 IP 확인 → PC 를 같은 와이파이에 연결 → 랜선 분리**.
+
+- 로봇 비밀번호(관리자 권한)가 필요한 킷에서만 한 번 묻고, 창을 닫으면 지웁니다. 어디에도 저장하지 않습니다.
+- 마지막 설정(SSID·IP·시각)은 로봇 설정에 기록되어 다음에 다시 열면 보입니다.
+- ⚠️ **핫스팟 주의**: 고정 IP `192.168.0.20N` 은 `192.168.0.x` 대역 공유기에서만 통합니다. 폰 핫스팟처럼
+  다른 대역이면 로봇이 붙어도 PC 가 못 찾습니다 — 앱이 이 경우를 감지해 경고하고 `setdhcp` 안내를 띄웁니다.
+- 따옴표(`"`)·백슬래시(`\`)가 든 와이파이 이름/비밀번호는 Pi 설정 스크립트가 지원하지 않아 앱이 거부합니다.
+
+### 안정성
+
+- 로봇이 SSH 키 검증에서 바로 연결을 끊는 경우 진짜 원인(호스트 키 변경) 대신 "입력 쓰기 실패" 만 보이던 문제 수정.
+- 호스트 키가 바뀐 로봇에 와이파이 설정을 시도해도 앱 안에서 복구(키 정리 → 다시 시도)할 수 있습니다.
+
+## 시스템 요구사항
+
+- Ubuntu 24.04 LTS
+- Python 3.12+
+- 인터넷 연결 (첫 설치 시 lerobot/torch 등 1~2GB 다운로드)
+- 디스크 공간 ~5GB
+
+## 무결성 검증
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.10/physical-labs_0.6.0-0.0.10_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.10_amd64.deb.sha256
+```
+
+SHA256: `d793d10cb99a1a2d2c304b95415075f5be2f392071d6cc70f38d6ab488976d46`
+
+## 커밋 로그 (v0.6.0-0.0.9 이후, physical-labs-app main)
+
+- Release: VERSION 0.0.9 → 0.0.10 (Linux .deb — LeKiwi 와이파이 설정) (172c3ac)
+- Add: lekiwi wifi 새롭게 연결 세팅 (35c38f9)
+- Docs: v0.6.0-0.0.9 Linux 릴리즈 작업 로그 (3cfda9b)
+
+---
+
 # Physical Labs v0.6.0-0.0.9 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는

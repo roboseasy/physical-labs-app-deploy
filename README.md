@@ -1,12 +1,12 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.9](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.9) (2026-09-04)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.10](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.10) (2026-09-05)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.9/physical-labs_0.6.0-0.0.9_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.0.9_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.10/physical-labs_0.6.0-0.0.10_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.0.10_amd64.deb
 > ```
-> **LeKiwi 바퀴 키보드 주행**(텔레옵 `W/A/S/D·Q/E·R/F`, 엔드이펙터 `↑↓←→·Shift+←→`), 바퀴까지 포함한
-> Motion Record/Replay, 3D 화면의 옴니 베이스, 캘리브레이션 토크 해제 버튼, LeKiwi 추론, 학습 탭.
-> SHA256 `a5c4b446367c12c1651085da471a1810ec68adc9abb1f3c1c82cbd843028c9fb`.
+> **LeKiwi 로봇 와이파이 설정** — 로봇 설정 탭에서 Pi 주변 와이파이를 스캔·선택하고 비밀번호를 넣어 연결,
+> 고정 IP 확인과 무선 전환까지 (터미널 `wifi`/`setip` 불필요). 0.0.9 의 바퀴 주행·Motion Record/Replay 포함.
+> SHA256 `d793d10cb99a1a2d2c304b95415075f5be2f392071d6cc70f38d6ab488976d46`.
 > Windows 최신은 [v0.6.0-0.0.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.8).
 
 # Physical Labs — 배포 (Releases)
