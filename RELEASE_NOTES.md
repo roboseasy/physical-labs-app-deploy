@@ -18,7 +18,7 @@ sudo apt install ./physical-labs_0.6.0-0.0.10_amd64.deb
 > 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
 > 이전 Physical Labs(0.0.1 / 0.0.9)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
 
-## 🔁 2026-09-06 재빌드 — 같은 버전(0.0.10)에 아래 수정을 담아 다시 올렸습니다
+## 🔁 2026-09-06 · 09-07 재빌드 — 같은 버전(0.0.10)에 아래 수정을 담아 다시 올렸습니다
 
 > 이미 0.0.10 을 설치했다면 위 명령으로 **다시 설치**하세요 (`apt` 가 같은 버전이라 건너뛰면 `sudo apt reinstall ./physical-labs_0.6.0-0.0.10_amd64.deb`).
 
@@ -29,6 +29,12 @@ sudo apt install ./physical-labs_0.6.0-0.0.10_amd64.deb
   속도는 속도 슬라이더(`Goal_Velocity`)가 정하고, 키를 떼면 그 자리에서 섭니다 (0.5 초 워치독 포함).
 - 관절을 조작할 때마다 2·3번 관절(shoulder_lift·elbow_flex)이 중력으로 조금씩 내려가던 래칫을
   고쳤습니다 — 바뀐 관절만 보내고, 목표와 실측을 분리해 처짐을 목표로 되먹이지 않습니다.
+
+### 🌐 텔레옵·수집 탭 호스트 배너 — 옛 주소로 뜨던 문제 (09-07 재빌드)
+
+- 로봇 설정에서 [찾기] 로 얻은 IP 로 [호스트 실행] 만 하고 텔레옵 탭에 오면 배너가 저장된 옛 IP
+  (예: `10.42.0.118`) 로 "호스트 준비 중…" 을 띄우던 문제를 고쳤습니다. 이제 마지막으로 띄운 주소를
+  씁니다. 앱을 다시 켠 뒤에도 그 주소를 쓰려면 로봇 설정에서 [로봇 저장] 을 눌러 주세요.
 
 ### 🛠 그 밖에
 
@@ -79,10 +85,11 @@ wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.
 sha256sum -c physical-labs_0.6.0-0.0.10_amd64.deb.sha256
 ```
 
-SHA256: `530fc11d68b5f7faaa2a706d34460f526bd71ef4ed9183094700b43a1b6fc8da`
+SHA256: `90aae464d3b689a741d7295d46baa537d1ae5dd64d529355d88024872a31f12c`
 
 ## 커밋 로그 (v0.6.0-0.0.9 이후, physical-labs-app main)
 
+- Fix: 호스트 주소 실시간 변경 (1701708)
 - Fix: 관절제어시 버그 해결 (afc6c77)
 - FIX: LeKiwi 관절 조그 — 로봇 쪽 적분(JOG)으로 전환해 규칙적 끊김 제거 (2752656)
 - Add: 모터셋업 추가 로봇 (f0ed11f)
