@@ -1,4 +1,4 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.10](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.10) (2026-09-05)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.10](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.10) (2026-09-05 · 2026-09-06 재빌드)
 >
 > ```bash
 > wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.10/physical-labs_0.6.0-0.0.10_amd64.deb

@@ -18,6 +18,26 @@ sudo apt install ./physical-labs_0.6.0-0.0.10_amd64.deb
 > 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
 > 이전 Physical Labs(0.0.1 / 0.0.9)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
 
+## 🔁 2026-09-06 재빌드 — 같은 버전(0.0.10)에 아래 수정을 담아 다시 올렸습니다
+
+> 이미 0.0.10 을 설치했다면 위 명령으로 **다시 설치**하세요 (`apt` 가 같은 버전이라 건너뛰면 `sudo apt reinstall ./physical-labs_0.6.0-0.0.10_amd64.deb`).
+
+### 🦾 LeKiwi 엔드이펙터 — 관절 키보드 조그가 끊기지 않습니다
+
+- Q/A/W/S… 관절 조그가 0.5 초마다 규칙적으로 멈추던 문제를 고쳤습니다. 이제 PC 는 방향만 보내고
+  **로봇(Pi)이 스스로 적분**합니다 — 화살표 바퀴 주행과 같은 구조라 같은 정도로 부드럽습니다.
+  속도는 속도 슬라이더(`Goal_Velocity`)가 정하고, 키를 떼면 그 자리에서 섭니다 (0.5 초 워치독 포함).
+- 관절을 조작할 때마다 2·3번 관절(shoulder_lift·elbow_flex)이 중력으로 조금씩 내려가던 래칫을
+  고쳤습니다 — 바뀐 관절만 보내고, 목표와 실측을 분리해 처짐을 목표로 되먹이지 않습니다.
+
+### 🛠 그 밖에
+
+- 칼리브레이션(원격 팔): 마지막 호스트 주소를 기억하고 연결 램프로 상태를 보여 줍니다.
+- 모터 셋업에 로봇 추가.
+- 텔레옵 Control 행: 원격 팔로워(LeKiwi)면 Follower 포트 대신 로봇 주소 안내를 보입니다.
+- 홈·다른 메뉴로 나가 호스트가 내려갈 때 로봇 설정 블록 상태가 함께 갱신됩니다.
+- 로봇 설정의 기본 연결 방식이 **이더넷 직결**입니다 (킷은 랜선부터 꽂기 때문).
+
 ## 주요 변경 사항 (Linux 0.0.9 대비)
 
 ### 📶 LeKiwi 로봇 와이파이 설정 — 터미널 없이 앱에서
@@ -59,10 +79,16 @@ wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.
 sha256sum -c physical-labs_0.6.0-0.0.10_amd64.deb.sha256
 ```
 
-SHA256: `d793d10cb99a1a2d2c304b95415075f5be2f392071d6cc70f38d6ab488976d46`
+SHA256: `530fc11d68b5f7faaa2a706d34460f526bd71ef4ed9183094700b43a1b6fc8da`
 
 ## 커밋 로그 (v0.6.0-0.0.9 이후, physical-labs-app main)
 
+- Fix: 관절제어시 버그 해결 (afc6c77)
+- FIX: LeKiwi 관절 조그 — 로봇 쪽 적분(JOG)으로 전환해 규칙적 끊김 제거 (2752656)
+- Add: 모터셋업 추가 로봇 (f0ed11f)
+- FIX: 칼리브레이션 원격 팔 — 마지막 호스트 주소 기억 + 연결 램프 (5d8193d)
+- Fix: 칼리브레이션 문제 개선 (9daacd7)
+- Docs: v0.6.0-0.0.10 Linux 릴리즈 작업 로그 (fea3607)
 - Release: VERSION 0.0.9 → 0.0.10 (Linux .deb — LeKiwi 와이파이 설정) (172c3ac)
 - Add: lekiwi wifi 새롭게 연결 세팅 (35c38f9)
 - Docs: v0.6.0-0.0.9 Linux 릴리즈 작업 로그 (3cfda9b)
