@@ -1,3 +1,81 @@
+# Physical Labs v0.6.0-0.0.11 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.8)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.11/physical-labs_0.6.0-0.0.11_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.11_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1 ~ 0.0.10)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.10 대비)
+
+### 🧩 워크스페이스 — Yolo + Pick&Place (LeKiwi 전용, 신규)
+
+사이드바 **워크스페이스** 에 첫 워크스페이스가 생겼습니다. YOLO 로 빨간 큐브를 찾아 다가가서 집고,
+출발 위치로 되돌아와 녹화해 둔 모션으로 내려놓는 과정을 앱 안에서 끝냅니다.
+
+1. **환경 준비** — 이 워크스페이스에만 필요한 `ultralytics` 를 여기서 한 번 설치합니다
+   (앱 설치에는 포함되지 않으며, 기존 torch·OpenCV 는 그대로 둡니다).
+2. **로봇 선택** — 로봇 창고와 같은 카드에서 여러 대를 고릅니다 (실행은 LeKiwi 한 대씩).
+3. **1 YOLO 모델** — 파일 창(홈 폴더부터)에서 `.pt` 가중치를 고르면 클래스 목록으로 확인합니다.
+4. **2 자세 준비** — 호스트를 켠 채 리더암으로 팔을 움직이면서 front·wrist 카메라의 YOLO 화면을
+   실시간으로 보고 `pre_pick` / `grasp` / `grasp_closed` 자세와 손목 뷰 참조(`grasp_ref`)를 저장합니다.
+   저장한 자세로 되돌리는 [이 자세로 이동], 기존 `poses/*.json` [가져오기] 지원.
+5. **3 Place 선택** — 엔드이펙터/텔레옵 탭에서 녹화한 모션 목록에서 내려놓기 모션을 고릅니다.
+   카드마다 [▶ 재생하기] 로 미리 돌려 보고 [초기 포즈 리셋] 으로 팔을 되돌립니다.
+6. **4 Pick&Place 실행** — [준비](일시정지 상태로 접속) → [▶ 시작] 이 바퀴를 굴립니다.
+   접근 → Pick → 접근 경로를 거꾸로 되짚어 출발 위치 복귀 → Place 모션 재생까지 **자동**입니다.
+   처음엔 [드라이런] 으로 회전 방향과 검출을 먼저 확인하세요. [■ 정지] 는 시작 자세로 천천히 돌아간 뒤
+   끊고, 한 번 더 누르면 즉시 멈춥니다. 카메라 화면은 아래 손잡이를 끌어 키울 수 있습니다.
+
+> ⚠️ **이 워크스페이스는 바퀴를 자율로 굴립니다.** 전진 0.3 m/s · 회전 60 deg/s 상한이 걸려 있고
+> 드라이런 우선을 권장합니다. 실물 검증은 아직 진행 중이니 처음엔 낮은 속도로 시작하세요.
+
+### 🎮 텔레오퍼레이션 탭
+
+- 하단 관절 그래프 영역을 손잡이로 끝까지 내려 **완전히 숨길** 수 있습니다 (더블클릭으로 접기/펼치기). LeKiwi·SO-101 공통.
+
+### 🛠 그 밖에
+
+- 텔레옵·수집 탭 호스트 배너가 마지막으로 띄운 주소를 실시간으로 반영합니다.
+- 칼리브레이션 3D 뷰의 드래그 손잡이를 공용 위젯으로 정리했습니다.
+
+## 시스템 요구사항
+
+- Ubuntu 24.04 LTS (amd64)
+- Python 3.12+
+- 인터넷 연결 (첫 설치 시 lerobot/torch 등 2~3GB 다운로드)
+- 디스크 공간 ~5GB
+- Yolo + Pick&Place: LeKiwi 킷 + SO-101 리더암, NVIDIA GPU 권장 (CPU 도 동작)
+
+## 무결성 검증
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.11/physical-labs_0.6.0-0.0.11_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.11_amd64.deb.sha256
+```
+
+SHA256: `67d702df4ed8f40badc0a6edd7951de7127f9089e27a1fc7fecff9a7fe709eba`
+
+## 커밋 로그 (v0.6.0-0.0.10 이후, physical-labs-app main)
+
+- fad554d Release: VERSION 0.0.10 → 0.0.11 (Linux .deb — Yolo+Pick&Place 워크스페이스)
+- c2e112b ADD: Yolo+Pick&Place 워크스페이스 + 텔레옵 그래프 접기
+- 1701708 Fix: 호스트 주소 실시간 변경
+
+---
+
 # Physical Labs v0.6.0-0.0.10 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
