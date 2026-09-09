@@ -23,21 +23,21 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 
 ```bash
 # 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.11/physical-labs_0.6.0-0.0.11_amd64.deb
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.11/physical-labs_0.6.0-0.0.11_amd64.deb.sha256
-sha256sum -c physical-labs_0.6.0-0.0.11_amd64.deb.sha256
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.12_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./physical-labs_0.6.0-0.0.11_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.12_amd64.deb
 ```
 
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
@@ -185,6 +185,18 @@ sudo apt install --reinstall ./physical-labs_<버전>_amd64.deb
 
 - 앱 로그: `~/.config/PhysicalLabs/logs/` (시나리오 로그가 활성화된 경우)
 - 설치 로그: `sudo journalctl -u apt | grep physical-labs` (또는 dpkg.log)
+
+### 9.8 학습 시작 직후 `Could not load libtorchcodec … libavdevice.so.60: cannot open shared object file`
+
+영상 디코더(torchcodec)가 시스템 FFmpeg 라이브러리를 찾지 못한 것입니다. 0.0.12 부터는 `.deb` 가 `ffmpeg` 를
+함께 설치하고 설치 마지막에 디코더 로드를 확인하므로 새로 설치하면 생기지 않습니다. 0.0.11 이하가 설치된 PC 는:
+
+```bash
+sudo apt install ffmpeg
+/opt/physical-labs/venv/bin/python -c 'from torchcodec.decoders import VideoDecoder; print("OK")'
+```
+
+`OK` 가 나오면 학습·데이터셋 재생이 정상 동작합니다.
 
 ## 10. 라이선스 / 저작권
 

@@ -1,3 +1,49 @@
+# Physical Labs v0.6.0-0.0.12 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.8)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.12_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1 ~ 0.0.11)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.11 대비)
+
+### 🛠 설치 — FFmpeg 의존성 추가 (학습 실패 수정)
+
+일부 PC 에서 학습을 시작하면 `RuntimeError: Could not load libtorchcodec … libavdevice.so.60: cannot open shared object file`
+로 바로 죽는 문제를 고쳤습니다. 영상 디코더(torchcodec)가 시스템 FFmpeg 라이브러리를 필요로 하는데 패키지가
+이를 선언하지 않아, `libavdevice` 가 없는 PC 에서는 데이터셋 학습·재생·편집이 모두 실패했습니다.
+
+- `.deb` 의존성에 `ffmpeg` 를 추가했습니다. `apt install` 이 배포판의 FFmpeg 라이브러리 전체를 함께 설치합니다.
+- 설치 마지막에 영상 디코더 로드를 확인합니다. 실패하면 원인과 해결 명령(`sudo apt install ffmpeg`)을 바로 출력합니다.
+- 이미 0.0.11 이 설치된 PC 는 이 버전으로 업그레이드하거나, 아래 한 줄로 같은 효과를 얻을 수 있습니다.
+
+```bash
+sudo apt install ffmpeg
+```
+
+앱 기능 변경은 없습니다. 0.0.11 의 Yolo + Pick&Place 워크스페이스 등은 그대로입니다.
+
+## 체크섬
+
+```
+SHA256  ad4057d64fd646bf86ceba596955ea0c430201128843fba7f89c52c0a447cb06  physical-labs_0.6.0-0.0.12_amd64.deb
+```
+
+---
+
 # Physical Labs v0.6.0-0.0.11 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는

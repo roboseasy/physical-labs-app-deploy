@@ -1,14 +1,13 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.11](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.11) (2026-09-09)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.12](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.12) (2026-09-09)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.11/physical-labs_0.6.0-0.0.11_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.0.11_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.0.12_amd64.deb
 > ```
-> **워크스페이스 · Yolo + Pick&Place (LeKiwi)** — YOLO 로 큐브를 찾아 집고, 출발 위치로 되돌아와 녹화 모션으로
-> 내려놓는 과정을 앱 안에서 (환경 준비 → 로봇 선택 → 모델 · 자세 준비 · Place 선택 · 자동 실행).
-> 텔레옵 탭 관절 그래프 완전 접기. 0.0.10 의 LeKiwi 와이파이 설정·바퀴 주행·Motion Record/Replay 포함.
-> SHA256 `67d702df4ed8f40badc0a6edd7951de7127f9089e27a1fc7fecff9a7fe709eba`.
-> Windows 최신은 [v0.6.0-0.0.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.8).
+> **설치 수정** — 학습 시작 시 `Could not load libtorchcodec … libavdevice.so.60` 로 죽던 문제. `.deb` 의존성에
+> `ffmpeg` 추가, 설치 마지막에 영상 디코더 로드 확인. 앱 기능은 0.0.11 과 동일
+> (워크스페이스 Yolo + Pick&Place, LeKiwi 와이파이 설정·바퀴 주행·Motion Record/Replay 포함).
+> SHA256 `ad4057d64fd646bf86ceba596955ea0c430201128843fba7f89c52c0a447cb06`.
 
 # Physical Labs — 배포 (Releases)
 
