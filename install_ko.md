@@ -23,21 +23,21 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 
 ```bash
 # 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb.sha256
-sha256sum -c physical-labs_0.6.0-0.0.12_amd64.deb.sha256
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.16_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./physical-labs_0.6.0-0.0.12_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.16_amd64.deb
 ```
 
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
@@ -197,6 +197,19 @@ sudo apt install ffmpeg
 ```
 
 `OK` 가 나오면 학습·데이터셋 재생이 정상 동작합니다.
+
+### 9.9 앱 안에서 라이브러리 설치(워크스페이스 [설치], 학습 탭 의존성 설치)가 `[Errno 13] Permission denied` 로 실패
+
+`.deb` 로 설치한 앱의 파이썬 환경(`/opt/physical-labs/venv`)은 관리자 소유라, 0.0.12 이하는 일반 사용자 권한으로
+설치를 시도하다 실패했습니다. 0.0.16 부터는 설치 시 **시스템 비밀번호 창**이 뜨고 입력하면 설치됩니다
+(설치 확인 창의 "Conda env" 문구도 실제 설치 위치 안내로 바뀌었습니다). 업그레이드 없이 워크스페이스
+Yolo + Pick&Place 만 쓰려면:
+
+```bash
+sudo /opt/physical-labs/venv/bin/python -m pip install --no-deps ultralytics==8.4.153 ultralytics-thop==2.1.6
+```
+
+설치 후 환경 준비 화면에서 **[다시 확인]** 을 누르세요.
 
 ## 10. 라이선스 / 저작권
 

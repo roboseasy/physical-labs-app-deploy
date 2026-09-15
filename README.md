@@ -1,13 +1,14 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.12](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.12) (2026-09-09)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.16](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.16) (2026-09-16)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.12/physical-labs_0.6.0-0.0.12_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.0.12_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.0.16_amd64.deb
 > ```
-> **설치 수정** — 학습 시작 시 `Could not load libtorchcodec … libavdevice.so.60` 로 죽던 문제. `.deb` 의존성에
-> `ffmpeg` 추가, 설치 마지막에 영상 디코더 로드 확인. 앱 기능은 0.0.11 과 동일
-> (워크스페이스 Yolo + Pick&Place, LeKiwi 와이파이 설정·바퀴 주행·Motion Record/Replay 포함).
-> SHA256 `ad4057d64fd646bf86ceba596955ea0c430201128843fba7f89c52c0a447cb06`.
+> **앱 안 라이브러리 설치 수정** — 워크스페이스 Yolo + Pick&Place 의 [설치](ultralytics)와 학습 탭 SmolVLA / X-VLA /
+> NVIDIA GROOT 의존성 설치가 `[Errno 13] Permission denied` 로 실패하던 문제. 이제 시스템 비밀번호 창으로 설치합니다.
+> ultralytics 8.4.153 고정. 0.0.12 의 FFmpeg 의존성·Yolo + Pick&Place 워크스페이스 등 포함.
+> SHA256 `a2d7d1d88796e9828f15c6c753c62926ea802f1b815da019707d219bb47870ad`.
+> Windows 최신은 [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15).
 
 # Physical Labs — 배포 (Releases)
 

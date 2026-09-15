@@ -1,3 +1,60 @@
+# Physical Labs v0.6.0-0.0.16 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.16_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1 ~ 0.0.12)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.12 대비)
+
+### 🛠 앱 안에서 추가 라이브러리를 설치할 수 없던 문제 수정
+
+아래 설치가 `[Errno 13] Permission denied` 로 실패하던 문제를 고쳤습니다.
+
+- 워크스페이스 **Yolo + Pick&Place** 환경 준비의 **[설치]** (ultralytics)
+- 학습 탭에서 **SmolVLA / X-VLA / NVIDIA GROOT** 카드를 골랐을 때의 의존성 설치
+
+`.deb` 로 설치한 앱의 파이썬 환경(`/opt/physical-labs/venv`)은 관리자 소유인데, 이 설치들은 일반 사용자
+권한으로 실행되고 있었습니다. 이제 설치 위치에 쓰기 권한이 없으면 **시스템 비밀번호 창**이 뜨고, 입력하면
+앱의 파이썬 환경에 설치됩니다. (GROOT 처럼 여러 단계인 설치는 단계마다 한 번씩 물을 수 있습니다.)
+
+설치 확인 창에 **"Conda env"** 로 표시되던 문구도 바꿨습니다. 앱은 conda 가 아니라 자체 파이썬 환경에
+설치하며, 확인 창에 실제 설치 위치와 비밀번호 필요 여부를 보여 줍니다.
+
+### 📌 ultralytics 설치 버전 고정
+
+Yolo + Pick&Place 가 설치하는 ultralytics 를 **8.4.153** (ultralytics-thop **2.1.6**) 으로 고정했습니다.
+
+### 0.0.12 이하가 설치된 PC 의 즉시 조치
+
+```bash
+sudo /opt/physical-labs/venv/bin/python -m pip install --no-deps ultralytics==8.4.153 ultralytics-thop==2.1.6
+```
+
+설치 후 앱의 환경 준비 화면에서 **[다시 확인]** 을 누르면 [다음] 이 활성화됩니다.
+그 밖의 앱 기능 변경은 없습니다.
+
+## 체크섬
+
+```
+SHA256  a2d7d1d88796e9828f15c6c753c62926ea802f1b815da019707d219bb47870ad  physical-labs_0.6.0-0.0.16_amd64.deb
+```
+
+---
+
 # Physical Labs v0.6.0-0.0.12 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
