@@ -1,13 +1,13 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.16](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.16) (2026-09-16)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.17](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.17) (2026-09-17)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.0.16_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.0.17_amd64.deb
 > ```
-> **앱 안 라이브러리 설치 수정** — 워크스페이스 Yolo + Pick&Place 의 [설치](ultralytics)와 학습 탭 SmolVLA / X-VLA /
-> NVIDIA GROOT 의존성 설치가 `[Errno 13] Permission denied` 로 실패하던 문제. 이제 시스템 비밀번호 창으로 설치합니다.
-> ultralytics 8.4.153 고정. 0.0.12 의 FFmpeg 의존성·Yolo + Pick&Place 워크스페이스 등 포함.
-> SHA256 `a2d7d1d88796e9828f15c6c753c62926ea802f1b815da019707d219bb47870ad`.
+> **앱 안 라이브러리 설치 경로 재점검** — 새 학습 옵션의 NVIDIA GROOT 배너 [설치] 가 관리자 권한 없이 실행돼 실패하던 문제,
+> `sudo pip` 로 직접 설치한 적이 있는 PC 에서 `[Errno 13]` 으로 실패하던 문제 수정(권한 오류 시 시스템 비밀번호 창으로 자동 재시도).
+> 실패 시 터미널용 `sudo …` 명령을 로그에 안내. 0.0.16 의 설치 권한 수정·0.0.12 의 FFmpeg 의존성 등 포함.
+> SHA256 `2c51f04d9a17f5c6507dc224514fda14bef004a097aa6e43ec2669fc67e73d8c`.
 > Windows 최신은 [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15).
 
 # Physical Labs — 배포 (Releases)

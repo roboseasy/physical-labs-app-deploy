@@ -23,21 +23,21 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 
 ```bash
 # 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.16/physical-labs_0.6.0-0.0.16_amd64.deb.sha256
-sha256sum -c physical-labs_0.6.0-0.0.16_amd64.deb.sha256
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.0.17_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./physical-labs_0.6.0-0.0.16_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.17_amd64.deb
 ```
 
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
@@ -210,6 +210,19 @@ sudo /opt/physical-labs/venv/bin/python -m pip install --no-deps ultralytics==8.
 ```
 
 설치 후 환경 준비 화면에서 **[다시 확인]** 을 누르세요.
+
+### 9.10 SmolVLA / X-VLA / GROOT 의존성 설치가 0.0.16 에서도 실패
+
+0.0.16 은 시스템 비밀번호 창(pkexec)으로 설치하도록 고쳤지만 두 경우가 남아 있었습니다. 새 학습 옵션 화면의
+**NVIDIA GROOT 배너 [설치]** 는 여전히 관리자 권한 없이 실행됐고, `sudo … pip install` 로 직접 설치한 적이 있는 PC 는
+앱의 파이썬 환경 안에 관리자 소유 파일이 섞여 비밀번호 창 없이 시도하다 `[Errno 13]` 으로 실패했습니다.
+0.0.17 부터는 둘 다 비밀번호 창으로 설치하고, 실패하면 설치 로그에 터미널용 `sudo …` 명령을 보여 줍니다.
+업그레이드하지 않을 때는 필요한 것만 실행한 뒤 앱을 다시 시작하세요.
+
+```bash
+sudo /opt/physical-labs/venv/bin/python -m pip install 'lerobot[smolvla]==0.6.0'   # SmolVLA
+sudo /opt/physical-labs/venv/bin/python -m pip install 'lerobot[xvla]==0.6.0'      # X-VLA
+```
 
 ## 10. 라이선스 / 저작권
 

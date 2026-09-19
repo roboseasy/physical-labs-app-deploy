@@ -1,3 +1,62 @@
+# Physical Labs v0.6.0-0.0.17 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.0.17_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1 ~ 0.0.16)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.16 대비)
+
+### 🛠 앱 안 라이브러리 설치(SmolVLA / X-VLA / GROOT / Yolo + Pick&Place) 경로 재점검
+
+0.0.16 에서 시스템 비밀번호 창(pkexec)으로 설치하도록 고쳤지만, 아직 실패할 수 있는 경우가 남아 있어 모두 막았습니다.
+
+- **새 학습 옵션 화면의 NVIDIA GROOT 배너 [설치]** 가 여전히 관리자 권한 없이 실행되어 `[Errno 13]` 으로
+  실패하고, 확인 창에 "Conda env" 가 표시되던 문제를 고쳤습니다. 이제 다른 카드와 같은 방식으로 설치합니다.
+- **`sudo … pip install` 로 직접 설치한 적이 있는 PC**: 앱의 파이썬 환경 안에 관리자 소유 파일이 섞이면
+  앱이 비밀번호 창 없이 설치를 시도하다 `[Errno 13]` 으로 실패했습니다. 이제 권한 오류가 나면 자동으로
+  시스템 비밀번호 창을 띄워 같은 단계를 다시 시도합니다.
+- **실패해도 다음 할 일을 알 수 있게**: 비밀번호 입력을 취소했거나 권한 문제로 설치가 실패하면, 터미널에
+  붙여 넣어 바로 실행할 수 있는 `sudo …` 명령을 설치 로그에 보여 줍니다.
+- 설치 직후 "설치 후에도 패키지를 찾을 수 없습니다" 로 잘못 판정될 수 있던 경우를 없앴습니다.
+- 학습 탭의 PyTorch / 패키지 설치 창 툴팁에 남아 있던 "(conda env)" 문구를 제거했습니다.
+
+### 0.0.16 이하가 설치된 PC 의 즉시 조치 (업그레이드하지 않을 때)
+
+터미널에서 필요한 것만 한 번 실행한 뒤 앱을 다시 시작하세요.
+
+```bash
+# SmolVLA
+sudo /opt/physical-labs/venv/bin/python -m pip install 'lerobot[smolvla]==0.6.0'
+# X-VLA
+sudo /opt/physical-labs/venv/bin/python -m pip install 'lerobot[xvla]==0.6.0'
+# Yolo + Pick&Place
+sudo /opt/physical-labs/venv/bin/python -m pip install --no-deps ultralytics==8.4.153 ultralytics-thop==2.1.6
+```
+
+그 밖의 앱 기능 변경은 없습니다. 0.0.16 의 설치 권한 수정, 0.0.12 의 FFmpeg 의존성, 0.0.11 의 Yolo + Pick&Place 워크스페이스 등은 그대로입니다.
+
+## 체크섬
+
+```
+SHA256  2c51f04d9a17f5c6507dc224514fda14bef004a097aa6e43ec2669fc67e73d8c  physical-labs_0.6.0-0.0.17_amd64.deb
+```
+
+---
+
 # Physical Labs v0.6.0-0.0.16 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
