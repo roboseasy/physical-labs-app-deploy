@@ -1,3 +1,75 @@
+# Physical Labs v0.6.0-0.1.0 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.0_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+
+> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
+> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
+> 이전 Physical Labs(0.0.1 ~ 0.0.17)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+
+## 주요 변경 사항 (Linux 0.0.17 대비)
+
+### ⚡ 설치가 훨씬 빨라졌습니다 — 기능별 추가 설치
+
+- 처음 설치할 때는 **기본 구성만** 받습니다 (약 0.5GB · 약 2~3분, 예전 6.9GB · 5~10분 이상).
+  설치 직후 로그인 · 모터 ID 셋업 · 단일 모터 테스트 · 로봇 설정을 바로 쓸 수 있습니다.
+- 칼리브레이션 · 엔드이펙터 · 텔레오퍼레이션 · 데이터 · 훈련 · 추론 · 워크스페이스는 **그 탭을 처음 열 때**
+  나오는 설치 카드의 **[설치하기]** 로 필요한 것만 설치합니다 (시스템 비밀번호 창이 한 번 뜹니다).
+  설치 중에도 다른 화면으로 옮겨 다닐 수 있고, 설정 화면에서 모든 기능을 한 번에 미리 설치할 수도 있습니다.
+- **GPU 학습**: NVIDIA GPU(드라이버 570+)가 있으면 **훈련 탭 › 환경 진단**에서 GPU 버전 PyTorch(약 4GB)로
+  바꿀 수 있습니다. GPU 가 없는 PC 는 GPU 버전을 받지 않습니다.
+- **0.0.17 이하에서 업그레이드하는 PC 는 다시 받는 것이 없습니다** — 이미 설치된 라이브러리(GPU PyTorch 포함)를 그대로 씁니다.
+- 설치 도중 앱을 끄려고 하면 "설치가 끝나면 종료" 를 기본으로 안내합니다 (중간에 끊기면 일부만 설치된 채 남기 때문).
+
+### 🖥 어떤 화면에서도 같은 비율로 보입니다 — 화면 비례 UI 배율
+
+- 해상도 · 화면비 · OS 배율(125% · 150% 등)에 맞춰 글씨와 여백이 비율대로 조정됩니다.
+- 1366×768, 1920×1080 @150% 같은 좁은 화면에서 창 아래쪽이 잘려 버튼을 누를 수 없던 문제를 고쳤습니다
+  (긴 화면은 스크롤로 볼 수 있습니다).
+
+### 🧠 SmolVLA · X-VLA 파인튜닝 / 추론
+
+- SmolVLA · X-VLA 파인튜닝이 시작하자마자 `Feature mismatch` 로 멈추던 문제를 고쳤습니다.
+  데이터셋 카메라 이름을 모델 카메라 이름에 자동으로 맞추고, 미리보기에 "카메라 이름 맞춤: front → camera1 · wrist → camera2" 처럼 보여 줍니다.
+- 앱 밖에서 카메라 이름을 바꿔 학습한 SmolVLA 모델이 추론 검사에서 막히던 문제를 고쳤습니다.
+- Hub 에 없는 `lerobot/smolvla_large` 를 학습 모델 목록에서 뺐습니다.
+
+### 🤖 LeKiwi
+
+- 텔레오퍼레이션 연결이 느리고 연타 시 꼬이던 문제를 고쳤습니다 — 연결 중 진행 단계를 보여 줍니다.
+- 칼리브레이션 탭의 **[토크 해제]** · 원격 보정이 "Host key verification failed" 로 막히면 (로봇 SD 카드를 새로 구운 경우 등)
+  이제 확인 창에서 **[예]** 를 누르면 앱이 기억한 키를 지우고 바로 다시 시도합니다. 더 이상 터미널에서 `ssh-keygen -R` 을 칠 필요가 없습니다.
+
+## 시스템 요구사항
+
+- Ubuntu 24.04 LTS · Python 3.12+
+- 인터넷 연결 (첫 설치는 기본 구성만 약 0.5GB · 약 2~3분)
+- 기능별 추가 설치: 로봇 제어 약 225MB · 데이터 약 113MB · 학습 약 33MB, GPU PyTorch 약 4GB
+- 디스크 공간: 기본 ~3GB, 모든 기능 ~4GB, GPU 학습까지 ~9GB
+
+## 체크섬
+
+```
+SHA256  48f1bcf50ca1e0773d7b6a09d6cfb89576bd2ac10301bea3bb176dc00fbd67d0  physical-labs_0.6.0-0.1.0_amd64.deb
+```
+
+```bash
+sha256sum -c physical-labs_0.6.0-0.1.0_amd64.deb.sha256
+```
+
+---
+
 # Physical Labs v0.6.0-0.0.17 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는

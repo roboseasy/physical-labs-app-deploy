@@ -11,8 +11,8 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 | 항목 | 요구 |
 |---|---|
 | 운영체제 | **Ubuntu 24.04 LTS** (Python 3.12 기본 포함) |
-| 인터넷 | 첫 설치 시 필수 (lerobot/torch 등 1~2GB 다운로드) |
-| 디스크 공간 | 약 5GB (가상환경 포함) |
+| 인터넷 | 첫 설치 시 필수 (기본 구성 약 0.5GB 다운로드 · 나머지 기능은 앱에서 필요할 때 설치) |
+| 디스크 공간 | 기본 약 3GB · 모든 기능 약 4GB · GPU 학습까지 약 9GB (가상환경 포함) |
 | 권한 | 설치 시 sudo 필요. 모터 USB 사용 시 dialout 그룹 |
 
 > ⚠️ Ubuntu 22.04 는 미지원입니다. lerobot 0.6.0 이 Python ≥3.12 를 요구하는데 22.04 의 기본 python 은 3.10 입니다.
@@ -23,21 +23,21 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 
 ```bash
 # 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb.sha256
-sha256sum -c physical-labs_0.6.0-0.0.17_amd64.deb.sha256
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.1.0_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./physical-labs_0.6.0-0.0.17_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.0_amd64.deb
 ```
 
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
@@ -48,8 +48,13 @@ sudo apt install ./physical-labs_0.6.0-0.0.17_amd64.deb
 1. apt 가 시스템 의존성(`python3-venv`, `libxcb-cursor0`, `libnss3` 등) 자동 설치
 2. `Setting up physical-labs (...)` 출력 후 postinst 시작
 3. `>>> physical-labs: 가상환경 생성 중...`
-4. `>>> physical-labs: 의존성 설치 중 (5~10분 소요, lerobot/torch 등 1~2GB 다운로드 필요)...`
-5. lerobot, torch, PyQt6 등 pip 진행 출력 (수백 줄)
+4. `>>> physical-labs: 기본 구성 설치 중 (약 2~3분, PyTorch CPU 포함 약 0.5GB 다운로드)...`
+5. PyQt6, torch(CPU) 등 pip 진행 출력
+
+> 0.1.0 부터는 **기본 구성(로그인 · 모터 ID 셋업 · 단일 모터 · 로봇 설정)만** 먼저 설치합니다.
+> 칼리브레이션 · 엔드이펙터 · 텔레오퍼레이션 · 데이터 · 훈련 · 추론 · 워크스페이스는 앱에서 **그 탭을 처음 열 때**
+> 나오는 설치 카드의 **[설치하기]** 로 설치합니다 (시스템 비밀번호 창이 한 번 뜹니다).
+> NVIDIA GPU(드라이버 570+)가 있으면 **훈련 탭 › 환경 진단**에서 GPU 버전 PyTorch(약 4GB)로 바꿀 수 있습니다.
 6. `>>> physical-labs: 설치 완료. 'physical-labs' 명령 또는 GNOME 메뉴에서 실행하세요.`
 
 ## 4.1 기존 `roboseasy-studio` 사용자 (제품명 변경 안내)
@@ -223,6 +228,18 @@ sudo /opt/physical-labs/venv/bin/python -m pip install --no-deps ultralytics==8.
 sudo /opt/physical-labs/venv/bin/python -m pip install 'lerobot[smolvla]==0.6.0'   # SmolVLA
 sudo /opt/physical-labs/venv/bin/python -m pip install 'lerobot[xvla]==0.6.0'      # X-VLA
 ```
+
+### 9.11 LeKiwi [토크 해제] · 원격 보정이 "Host key verification failed" 로 실패
+
+로봇(Pi)의 SD 카드를 새로 구웠거나 OS 를 다시 설치하면 SSH 호스트 키가 바뀌어 앱이 접속을 거부합니다.
+0.1.0 부터는 확인 창에서 **[예]** 를 누르면 앱이 기억한 키를 지우고 바로 다시 시도합니다.
+이전 버전에서는 터미널에서 한 번 실행하세요 (앱 전용 목록만 바뀌며 `~/.ssh` 는 건드리지 않습니다).
+
+```bash
+ssh-keygen -f ~/.config/PhysicalLabs/ssh/known_hosts -R 'physical-labs.robot.lekiwi'
+```
+
+그런 적이 없는데 이 오류가 나면 다른 기기에 접속하고 있을 수 있습니다 — 네트워크와 IP 를 먼저 확인하세요.
 
 ## 10. 라이선스 / 저작권
 

@@ -1,13 +1,13 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.0.17](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.17) (2026-09-17)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.0](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.0) (2026-10-01)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.0.17/physical-labs_0.6.0-0.0.17_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.0.17_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.1.0_amd64.deb
 > ```
-> **앱 안 라이브러리 설치 경로 재점검** — 새 학습 옵션의 NVIDIA GROOT 배너 [설치] 가 관리자 권한 없이 실행돼 실패하던 문제,
-> `sudo pip` 로 직접 설치한 적이 있는 PC 에서 `[Errno 13]` 으로 실패하던 문제 수정(권한 오류 시 시스템 비밀번호 창으로 자동 재시도).
-> 실패 시 터미널용 `sudo …` 명령을 로그에 안내. 0.0.16 의 설치 권한 수정·0.0.12 의 FFmpeg 의존성 등 포함.
-> SHA256 `2c51f04d9a17f5c6507dc224514fda14bef004a097aa6e43ec2669fc67e73d8c`.
+> **설치가 훨씬 빨라졌습니다** — 처음엔 기본 구성만 설치(약 0.5GB · 2~3분, 예전 6.9GB · 5~10분+)하고, 칼리브레이션·텔레오퍼레이션·
+> 데이터·훈련·추론 등은 그 탭을 처음 열 때 [설치하기] 로 필요한 것만 설치합니다. 0.0.17 이하에서 업그레이드하면 다시 받는 것이 없습니다.
+> 화면 비례 UI 배율(좁은 화면 잘림 해소), SmolVLA·X-VLA 파인튜닝 카메라 이름 자동 맞춤, LeKiwi 호스트 키 변경 앱 안 복구 포함.
+> SHA256 `48f1bcf50ca1e0773d7b6a09d6cfb89576bd2ac10301bea3bb176dc00fbd67d0`.
 > Windows 최신은 [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15).
 
 # Physical Labs — 배포 (Releases)
