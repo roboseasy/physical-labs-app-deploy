@@ -1,3 +1,54 @@
+# Physical Labs v0.6.0-0.1.2 (Linux)
+
+> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
+> [v0.6.0-0.1.1](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.1)
+> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+
+## 빠른 설치 — Ubuntu 24.04+
+
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.2/physical-labs_0.6.0-0.1.2_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.2_amd64.deb
+```
+
+설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
+설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/docs/install_ko.md)
+
+## 변경 사항 (v0.6.0-0.1.0 대비)
+
+### 학습이 시작 직후 멈추던 문제 (일부 PC)
+- GPU 버전 PyTorch 로 학습할 때 `DataLoader worker` 에서 `torchcodec` 영상 디코더를 불러오지 못해
+  첫 배치에서 멈추던 문제를 고쳤습니다. 원인은 GPU 빌드 torchcodec 이 쓰는 **NVIDIA NPP 라이브러리**가
+  함께 설치되지 않던 것으로, CUDA Toolkit 이 없는 PC 에서만 나타났습니다.
+- GPU 버전 PyTorch 설치 시 NPP 를 함께 설치하고, 학습 프로세스가 그 위치를 찾도록 연결합니다.
+- **훈련 탭 › 환경 진단**에 **"영상 디코더"** 항목을 추가했습니다. 학습과 같은 조건으로 미리 확인하고,
+  NPP 가 없으면 카드를 눌러 바로 설치할 수 있습니다.
+- ⚠️ **이미 GPU 버전 PyTorch 를 설치해 둔 PC**: 업데이트 후 환경 진단에서 "영상 디코더" 가 "없음" 이면
+  카드를 눌러 설치해 주세요 (한 번만).
+
+### LeKiwi 호스트가 정지되지 않을 때
+- 이전에 실행한 `lekiwi_host` 가 로봇에 남아 포트를 붙잡고 있으면, 터미널에서 `pkill -f lekiwi_host`
+  를 치라는 안내 대신 **[강제 정지]** 버튼이 뜹니다. 누르면 앱이 로봇에서 직접 정지하고 하던 동작
+  (호스트 실행·정지)을 이어서 마칩니다.
+
+## 시스템 요구사항
+
+- Ubuntu 24.04 LTS · Python 3.12+
+- 인터넷 연결 (첫 설치는 기본 구성만 약 0.5GB 다운로드 · 약 2~3분)
+- 칼리브레이션 · 데이터 · 학습 기능의 라이브러리는 앱에서 그 탭을 처음 열 때 설치합니다
+- GPU 학습: NVIDIA GPU + 드라이버 570 이상 (CUDA 12.8 지원)
+- 디스크 공간: 기본 ~3GB, 모든 기능 ~4GB, GPU 학습까지 ~9GB
+
+## 무결성 검증
+
+```
+sha256sum -c physical-labs_0.6.0-0.1.2_amd64.deb.sha256
+```
+
+SHA256: `69b3f6577e51378e5eb79a328f3eddcfe51b78bb80e17be64f277f708fc11297`
+
+---
+
 # Physical Labs v0.6.0-0.1.0 (Linux)
 
 > 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는

@@ -23,21 +23,21 @@ Physical Labs 는 Feetech STS3215 서보 모터 ID 셋업과 LeRobot SO-ARM 101 
 
 ```bash
 # 최신 release 의 파일명을 확인 후 (예: v0.5.1-0.0.1)
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.2/physical-labs_0.6.0-0.1.2_amd64.deb
 ```
 
 ### 무결성 검증 (선택)
 
 ```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb.sha256
-sha256sum -c physical-labs_0.6.0-0.1.0_amd64.deb.sha256
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.2/physical-labs_0.6.0-0.1.2_amd64.deb.sha256
+sha256sum -c physical-labs_0.6.0-0.1.2_amd64.deb.sha256
 # OK 출력 확인
 ```
 
 ## 4. 설치
 
 ```bash
-sudo apt install ./physical-labs_0.6.0-0.1.0_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.2_amd64.deb
 ```
 
 > ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
@@ -240,6 +240,19 @@ ssh-keygen -f ~/.config/PhysicalLabs/ssh/known_hosts -R 'physical-labs.robot.lek
 ```
 
 그런 적이 없는데 이 오류가 나면 다른 기기에 접속하고 있을 수 있습니다 — 네트워크와 IP 를 먼저 확인하세요.
+
+### 9.12 GPU 로 학습 시작 직후 멈춤 — `from torchcodec.decoders import VideoDecoder` 에서 오류 (`libnppicc.so.12`)
+
+GPU 버전 PyTorch 의 영상 디코더(torchcodec)가 쓰는 NVIDIA NPP 라이브러리가 없는 것입니다. CUDA Toolkit 이 깔린 PC 에서는
+나타나지 않아 일부 PC 에서만 생깁니다. 0.1.2 부터는 GPU 버전 PyTorch 를 설치할 때 함께 설치됩니다.
+**이미 GPU 버전을 설치해 둔 PC** 는 업데이트 후 **훈련 탭 › 환경 진단**의 **"영상 디코더"** 카드가 "없음" 이면 눌러서 설치하세요.
+이전 버전에서는 터미널에서 설치한 뒤 앱을 다시 시작하세요.
+
+```bash
+sudo /opt/physical-labs/venv/bin/python -m pip install nvidia-npp-cu12==12.3.3.100
+```
+
+0.1.1 이하는 설치만으로는 경로를 찾지 못할 수 있습니다 — 0.1.2 로 업데이트하는 것을 권장합니다.
 
 ## 10. 라이선스 / 저작권
 
