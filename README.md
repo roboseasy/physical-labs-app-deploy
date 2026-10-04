@@ -1,13 +1,14 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.2](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.2) (2026-10-03)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.0](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.0) (2026-10-04)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.2/physical-labs_0.6.0-0.1.2_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.1.2_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.1.0_amd64.deb
 > ```
-> **일부 PC 에서 학습이 시작 직후 멈추던 문제 수정** — GPU 버전 PyTorch 의 영상 디코더가 쓰는 NVIDIA NPP 라이브러리를 함께 설치하고,
-> 훈련 탭 › 환경 진단에 "영상 디코더" 확인·설치 항목을 추가했습니다. LeKiwi 호스트가 정지되지 않을 때 앱 안 [강제 정지] 버튼 포함.
-> SHA256 `69b3f6577e51378e5eb79a328f3eddcfe51b78bb80e17be64f277f708fc11297`.
-> Windows 최신은 [v0.6.0-0.1.1](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.1).
+> **2026-10-04 재배포** — 이전 0.1.0 · 0.1.1 · 0.1.2 를 정리하고 지금 버전을 0.1.0 으로 다시 올렸습니다 (0.1.2 를 설치한 PC 는 apt 가
+> 다운그레이드를 묻습니다 — 그대로 진행). LeKiwi AP 모드 · 고정 포트 자동 감지 · 로봇 재시작/종료 · 데이터 탭 바퀴 주행,
+> 오프라인이면 HuggingFace 자동 업로드 건너뛰기 + [데이터셋 업로드], 모델 삭제, Pick&Place Place 녹화 등.
+> SHA256 `72ac5f8d57c84c8eff6c8054e92f02150577ca62f25f259c0265554473b9e34b`.
+> Windows 최신은 [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15).
 
 # Physical Labs — 배포 (Releases)
 

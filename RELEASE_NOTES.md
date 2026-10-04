@@ -1,123 +1,58 @@
-# Physical Labs v0.6.0-0.1.2 (Linux)
-
-> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
-> [v0.6.0-0.1.1](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.1)
-> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
-
-## 빠른 설치 — Ubuntu 24.04+
-
-```bash
-wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.2/physical-labs_0.6.0-0.1.2_amd64.deb
-sudo apt install ./physical-labs_0.6.0-0.1.2_amd64.deb
-```
-
-설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
-설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/docs/install_ko.md)
-
-## 변경 사항 (v0.6.0-0.1.0 대비)
-
-### 학습이 시작 직후 멈추던 문제 (일부 PC)
-- GPU 버전 PyTorch 로 학습할 때 `DataLoader worker` 에서 `torchcodec` 영상 디코더를 불러오지 못해
-  첫 배치에서 멈추던 문제를 고쳤습니다. 원인은 GPU 빌드 torchcodec 이 쓰는 **NVIDIA NPP 라이브러리**가
-  함께 설치되지 않던 것으로, CUDA Toolkit 이 없는 PC 에서만 나타났습니다.
-- GPU 버전 PyTorch 설치 시 NPP 를 함께 설치하고, 학습 프로세스가 그 위치를 찾도록 연결합니다.
-- **훈련 탭 › 환경 진단**에 **"영상 디코더"** 항목을 추가했습니다. 학습과 같은 조건으로 미리 확인하고,
-  NPP 가 없으면 카드를 눌러 바로 설치할 수 있습니다.
-- ⚠️ **이미 GPU 버전 PyTorch 를 설치해 둔 PC**: 업데이트 후 환경 진단에서 "영상 디코더" 가 "없음" 이면
-  카드를 눌러 설치해 주세요 (한 번만).
-
-### LeKiwi 호스트가 정지되지 않을 때
-- 이전에 실행한 `lekiwi_host` 가 로봇에 남아 포트를 붙잡고 있으면, 터미널에서 `pkill -f lekiwi_host`
-  를 치라는 안내 대신 **[강제 정지]** 버튼이 뜹니다. 누르면 앱이 로봇에서 직접 정지하고 하던 동작
-  (호스트 실행·정지)을 이어서 마칩니다.
-
-## 시스템 요구사항
-
-- Ubuntu 24.04 LTS · Python 3.12+
-- 인터넷 연결 (첫 설치는 기본 구성만 약 0.5GB 다운로드 · 약 2~3분)
-- 칼리브레이션 · 데이터 · 학습 기능의 라이브러리는 앱에서 그 탭을 처음 열 때 설치합니다
-- GPU 학습: NVIDIA GPU + 드라이버 570 이상 (CUDA 12.8 지원)
-- 디스크 공간: 기본 ~3GB, 모든 기능 ~4GB, GPU 학습까지 ~9GB
-
-## 무결성 검증
-
-```
-sha256sum -c physical-labs_0.6.0-0.1.2_amd64.deb.sha256
-```
-
-SHA256: `69b3f6577e51378e5eb79a328f3eddcfe51b78bb80e17be64f277f708fc11297`
-
----
-
 # Physical Labs v0.6.0-0.1.0 (Linux)
 
-> 이 릴리즈는 **Ubuntu 24.04+ 전용 `.deb`** 입니다. Windows 사용자는
-> [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15)
-> 의 인스톨러를 받으세요. LeRobot **0.6.0** 기반.
+> 2026-10-04 재배포 — 이전에 올렸던 v0.6.0-0.1.0 · 0.1.1(Windows) · 0.1.2 를 정리하고 지금 버전을 0.1.0 으로 다시 올렸습니다.
+> **0.1.2 를 설치했던 PC** 는 아래 명령에서 apt 가 "다운그레이드" 를 묻습니다 — 그대로 진행하면 됩니다.
 
-## 빠른 설치 — Ubuntu 24.04+
+## 빠른 설치
 
 ```bash
 wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.0/physical-labs_0.6.0-0.1.0_amd64.deb
 sudo apt install ./physical-labs_0.6.0-0.1.0_amd64.deb
 ```
 
-설치 후 실행: `physical-labs` 명령 또는 GNOME 메뉴에서 **Physical Labs**.
-설치 가이드: [install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/install_ko.md)
+자세한 가이드: [docs/install_ko.md](https://github.com/roboseasy/physical-labs-app-deploy/blob/main/docs/install_ko.md)
 
-> ⚠️ **`sudo dpkg -i` 가 아니라 `sudo apt install` 을 쓰세요.**
-> 구 패키지 `roboseasy-studio` 와 `Conflicts` 관계라 `dpkg -i` 는 거부됩니다.
-> 이전 Physical Labs(0.0.1 ~ 0.0.17)가 설치돼 있으면 `apt` 가 그대로 업그레이드합니다.
+## 이번 버전에 들어간 것
 
-## 주요 변경 사항 (Linux 0.0.17 대비)
+**설치·화면**
+- 기능 패키지 지연 설치 — 첫 설치는 기본 구성만(약 0.5GB · 2~3분). 칼리브레이션·데이터·훈련·추론 라이브러리는 그 탭을 처음 열 때 설치
+- 화면 비례 UI 배율 — 해상도·화면 배율이 달라도 같은 비율로 보입니다
+- GPU 학습: 일부 PC 에서 첫 배치에서 멈추던 문제 수정 (NVIDIA NPP 동시 설치, 환경 진단 "영상 디코더")
 
-### ⚡ 설치가 훨씬 빨라졌습니다 — 기능별 추가 설치
+**LeKiwi**
+- 팔로워 포트 자동 감지 — 로봇의 `start_lekiwi_host.sh` 의 `--robot.port` (고정 포트 `/dev/lekiwi`) 를 읽어 보정·EEF·토크 해제에 사용
+- 보정 ID 를 킷 스크립트에서 읽고, 칼리브레이션 화면에 "로봇 안에 저장된 팔로워 보정" 표시
+- **AP 모드** — 로봇 설정 연결 방식 [AP 모드]: AP 이름·비밀번호 설정, AP 켜기(로봇 IP 자동 전환), [노트북을 이 AP 에 연결], 공유기로 돌아가기
+  (로봇에 `~/lekiwi_net` 스크립트가 있는 킷)
+- 로봇 설정 [로봇 다시 시작] · [로봇 종료]
+- 데이터 탭(수집)에서 바퀴 키보드 주행 W/S·A/D·Q/E·R/F — 바퀴 지령이 데이터셋 액션에도 기록됩니다
+- 호스트 포트가 안 닫힐 때 앱 안에서 [강제 정지]
 
-- 처음 설치할 때는 **기본 구성만** 받습니다 (약 0.5GB · 약 2~3분, 예전 6.9GB · 5~10분 이상).
-  설치 직후 로그인 · 모터 ID 셋업 · 단일 모터 테스트 · 로봇 설정을 바로 쓸 수 있습니다.
-- 칼리브레이션 · 엔드이펙터 · 텔레오퍼레이션 · 데이터 · 훈련 · 추론 · 워크스페이스는 **그 탭을 처음 열 때**
-  나오는 설치 카드의 **[설치하기]** 로 필요한 것만 설치합니다 (시스템 비밀번호 창이 한 번 뜹니다).
-  설치 중에도 다른 화면으로 옮겨 다닐 수 있고, 설정 화면에서 모든 기능을 한 번에 미리 설치할 수도 있습니다.
-- **GPU 학습**: NVIDIA GPU(드라이버 570+)가 있으면 **훈련 탭 › 환경 진단**에서 GPU 버전 PyTorch(약 4GB)로
-  바꿀 수 있습니다. GPU 가 없는 PC 는 GPU 버전을 받지 않습니다.
-- **0.0.17 이하에서 업그레이드하는 PC 는 다시 받는 것이 없습니다** — 이미 설치된 라이브러리(GPU PyTorch 포함)를 그대로 씁니다.
-- 설치 도중 앱을 끄려고 하면 "설치가 끝나면 종료" 를 기본으로 안내합니다 (중간에 끊기면 일부만 설치된 채 남기 때문).
+**데이터·훈련·추론**
+- 인터넷이 없으면(AP 모드 등) 수집 후 HuggingFace 자동 업로드를 건너뛰고 로컬에 보관 — 데이터 › 편집 [데이터셋 업로드] 로 나중에 올리기
+- 데이터·편집·훈련 탭 데이터셋 목록을 최신순으로
+- 추론 탭·훈련 탭(학습 재개)에서 모델 삭제
+- SmolVLA·X-VLA 파인튜닝 카메라 이름 자동 맞춤(`--rename_map`)
 
-### 🖥 어떤 화면에서도 같은 비율로 보입니다 — 화면 비례 UI 배율
-
-- 해상도 · 화면비 · OS 배율(125% · 150% 등)에 맞춰 글씨와 여백이 비율대로 조정됩니다.
-- 1366×768, 1920×1080 @150% 같은 좁은 화면에서 창 아래쪽이 잘려 버튼을 누를 수 없던 문제를 고쳤습니다
-  (긴 화면은 스크롤로 볼 수 있습니다).
-
-### 🧠 SmolVLA · X-VLA 파인튜닝 / 추론
-
-- SmolVLA · X-VLA 파인튜닝이 시작하자마자 `Feature mismatch` 로 멈추던 문제를 고쳤습니다.
-  데이터셋 카메라 이름을 모델 카메라 이름에 자동으로 맞추고, 미리보기에 "카메라 이름 맞춤: front → camera1 · wrist → camera2" 처럼 보여 줍니다.
-- 앱 밖에서 카메라 이름을 바꿔 학습한 SmolVLA 모델이 추론 검사에서 막히던 문제를 고쳤습니다.
-- Hub 에 없는 `lerobot/smolvla_large` 를 학습 모델 목록에서 뺐습니다.
-
-### 🤖 LeKiwi
-
-- 텔레오퍼레이션 연결이 느리고 연타 시 꼬이던 문제를 고쳤습니다 — 연결 중 진행 단계를 보여 줍니다.
-- 칼리브레이션 탭의 **[토크 해제]** · 원격 보정이 "Host key verification failed" 로 막히면 (로봇 SD 카드를 새로 구운 경우 등)
-  이제 확인 창에서 **[예]** 를 누르면 앱이 기억한 키를 지우고 바로 다시 시도합니다. 더 이상 터미널에서 `ssh-keygen -R` 을 칠 필요가 없습니다.
+**워크스페이스 Yolo + Pick&Place**
+- 3단계 [Place 녹화하기] (리더암으로 바로 녹화)
+- 녹화한 Place 모션으로 넘어가는 지연 수정, Place 재생 배속·"큐브 들고 시작 자세로" 시간 설정
 
 ## 시스템 요구사항
 
 - Ubuntu 24.04 LTS · Python 3.12+
-- 인터넷 연결 (첫 설치는 기본 구성만 약 0.5GB · 약 2~3분)
-- 기능별 추가 설치: 로봇 제어 약 225MB · 데이터 약 113MB · 학습 약 33MB, GPU PyTorch 약 4GB
+- 인터넷 연결 (첫 설치는 기본 구성만 약 0.5GB 다운로드 · 약 2~3분)
+- 칼리브레이션 · 데이터 · 학습 기능의 라이브러리는 앱에서 그 탭을 처음 열 때 설치합니다
+  (로봇 제어 약 225MB · 데이터 약 113MB · 학습 약 33MB, NVIDIA GPU 가 있으면 훈련 탭에서 GPU 버전 PyTorch 약 4GB)
 - 디스크 공간: 기본 ~3GB, 모든 기능 ~4GB, GPU 학습까지 ~9GB
 
-## 체크섬
+## 무결성 검증
 
 ```
-SHA256  48f1bcf50ca1e0773d7b6a09d6cfb89576bd2ac10301bea3bb176dc00fbd67d0  physical-labs_0.6.0-0.1.0_amd64.deb
-```
-
-```bash
 sha256sum -c physical-labs_0.6.0-0.1.0_amd64.deb.sha256
 ```
+
+SHA256: `72ac5f8d57c84c8eff6c8054e92f02150577ca62f25f259c0265554473b9e34b`
 
 ---
 
