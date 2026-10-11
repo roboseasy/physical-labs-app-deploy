@@ -8,7 +8,9 @@
 > 다운그레이드를 묻습니다 — 그대로 진행). LeKiwi AP 모드 · 고정 포트 자동 감지 · 로봇 재시작/종료 · 데이터 탭 바퀴 주행,
 > 오프라인이면 HuggingFace 자동 업로드 건너뛰기 + [데이터셋 업로드], 모델 삭제, Pick&Place Place 녹화 등.
 > SHA256 `72ac5f8d57c84c8eff6c8054e92f02150577ca62f25f259c0265554473b9e34b`.
-> Windows 최신은 [v0.6.0-0.0.15](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.0.15).
+> Windows 최신은 [v0.6.0-0.1.4](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.4) (2026-10-11) —
+> [physical-labs-setup_0.6.0-0.1.4_win64.exe](https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.4/physical-labs-setup_0.6.0-0.1.4_win64.exe),
+> SHA256 `cac1bffa012f86fb5c4abc666fcb207519565fa5751c771527e0780490597475`.
 
 # Physical Labs — 배포 (Releases)
 
