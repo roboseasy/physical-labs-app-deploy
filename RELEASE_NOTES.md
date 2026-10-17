@@ -1,3 +1,25 @@
+# Physical Labs v0.6.0-0.1.6 (Linux)
+
+### 새 기능
+- **SO-102 (로보시지 7축 로봇 팔) 지원** — 로봇 만들기에서 SO-102 를 고를 수 있습니다.
+  - 모터 7개(5번 손목 좌우 `wrist_yaw` 추가) — 로봇 설정의 ID 셋업, 칼리브레이션, 텔레오퍼레이션, 데이터 수집, 훈련, 추론, 데이터셋 재생 지원
+  - 7축 3D 모델로 실물 자세를 실시간 표시
+  - lerobot `so102_follower` / `so102_leader` 와 호환 (같은 데이터셋·보정 파일 사용)
+  - 엔드이펙터(EEF) 탭은 SO-102 에서 아직 지원하지 않습니다
+
+### 수정
+- 칼리브레이션 시작 직후 "보정 실패" 로 멈추던 문제 수정 (SO-101 포함)
+- 같은 ID 로 등록한 다른 기종의 보정 파일을 읽거나 지우던 문제 수정
+
+### 설치
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.6/physical-labs_0.6.0-0.1.6_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.6_amd64.deb
+```
+SHA256: `6cef1a02db0594646600179edbd2d9db9ec45c8470b9a0522699f71d8b72e24a`
+
+---
+
 # Physical Labs v0.6.0-0.1.0 (Linux)
 
 > 2026-10-04 재배포 — 이전에 올렸던 v0.6.0-0.1.0 · 0.1.1(Windows) · 0.1.2 를 정리하고 지금 버전을 0.1.0 으로 다시 올렸습니다.
