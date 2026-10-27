@@ -1,12 +1,12 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.8) (2026-10-27)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.9](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.9) (2026-10-27)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.8/physical-labs_0.6.0-0.1.8_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.1.8_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.9/physical-labs_0.6.0-0.1.9_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.1.9_amd64.deb
 > ```
-> **ROS 2 로 바뀐 새 LeKiwi 로봇 지원** — [연결 확인] 이 기존 LeKiwi 와 새 ROS 2 로봇(웹 게이트웨이)을 알아서 구분하고,
-> 로봇 켜기/끄기 · 칼리브레이션 · 텔레오퍼레이션 · 데이터 수집 · 추론 · AP 모드 · 카메라 미리보기를 지원합니다.
-> SHA256 `08ace2824196976ff12ba775d1950e950ac10a846d90714fda310ef71ecb8d85`.
+> **데이터 수집 업로드 수정** — 'HuggingFace Hub 에 업로드' 를 '아니오' 로 골라도 HF 토큰이 있으면 공개 저장소로 올라가던 문제를 고쳤습니다.
+> ROS 2 LeKiwi 로봇 지원(0.1.8)도 그대로 들어 있습니다. 사용 설명서: https://roboseasy.ai/docs/physical-labs
+> SHA256 `3f01a4a974ffa1b316c67ebdc27154e781f60fec98a44eb39bb91fd709f1790a`.
 > Windows 최신은 [v0.6.0-0.1.7](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.7) (2026-10-22) —
 > [physical-labs-setup_0.6.0-0.1.7_win64.exe](https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.7/physical-labs-setup_0.6.0-0.1.7_win64.exe),
 > SHA256 `7988c028ba155571284f5212d20f77d3f8e716fcdbb8269b898967f2cff6a775`.

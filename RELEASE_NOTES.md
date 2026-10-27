@@ -1,3 +1,21 @@
+# Physical Labs v0.6.0-0.1.9 (Linux)
+
+### 수정
+- **데이터 수집에서 'HuggingFace Hub 에 업로드' 를 '아니오' 로 골라도 업로드되던 문제** — Hugging Face 토큰이 저장돼 있으면 수집이 끝난 뒤 데이터셋이 공개 저장소로 올라갔습니다 (0.1.8 이하, SO-101 · SO-102 · LeKiwi 모두). 이제 '아니오' 면 올리지 않습니다. 이어서 수집은 원래 맞게 동작했습니다.
+  - 0.1.8 이하로 수집하면서 '아니오' 를 골랐던 데이터셋이 Hugging Face 에 올라가 있을 수 있습니다. 내 데이터셋 목록(https://huggingface.co/settings/repositories)을 확인하고, 원하지 않는 것은 지우거나 비공개로 바꾸세요.
+- 설치 파일에 앱과 무관한 작업 파일(`.omc`)이 들어가던 것을 뺐습니다.
+
+### 설치
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.9/physical-labs_0.6.0-0.1.9_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.9_amd64.deb
+```
+SHA256: `3f01a4a974ffa1b316c67ebdc27154e781f60fec98a44eb39bb91fd709f1790a`
+
+사용 설명서: https://roboseasy.ai/docs/physical-labs
+
+---
+
 # Physical Labs v0.6.0-0.1.8 (Linux)
 
 ### 새 기능
