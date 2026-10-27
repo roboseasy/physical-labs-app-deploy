@@ -1,12 +1,12 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.6](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.6) (2026-10-17)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.1.8](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.8) (2026-10-27)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.6/physical-labs_0.6.0-0.1.6_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.1.6_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.8/physical-labs_0.6.0-0.1.8_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.1.8_amd64.deb
 > ```
-> **SO-102 (로보시지 7축 로봇 팔) 지원** — ID 셋업·칼리브레이션·텔레오퍼레이션·데이터 수집·훈련·추론·데이터셋 재생
-> (EEF 탭 제외). 칼리브레이션 시작 직후 "보정 실패" 로 멈추던 문제 수정.
-> SHA256 `6cef1a02db0594646600179edbd2d9db9ec45c8470b9a0522699f71d8b72e24a`.
+> **ROS 2 로 바뀐 새 LeKiwi 로봇 지원** — [연결 확인] 이 기존 LeKiwi 와 새 ROS 2 로봇(웹 게이트웨이)을 알아서 구분하고,
+> 로봇 켜기/끄기 · 칼리브레이션 · 텔레오퍼레이션 · 데이터 수집 · 추론 · AP 모드 · 카메라 미리보기를 지원합니다.
+> SHA256 `08ace2824196976ff12ba775d1950e950ac10a846d90714fda310ef71ecb8d85`.
 > Windows 최신은 [v0.6.0-0.1.7](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.7) (2026-10-22) —
 > [physical-labs-setup_0.6.0-0.1.7_win64.exe](https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.7/physical-labs-setup_0.6.0-0.1.7_win64.exe),
 > SHA256 `7988c028ba155571284f5212d20f77d3f8e716fcdbb8269b898967f2cff6a775`.

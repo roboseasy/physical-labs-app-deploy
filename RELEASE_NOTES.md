@@ -1,3 +1,27 @@
+# Physical Labs v0.6.0-0.1.8 (Linux)
+
+### 새 기능
+- **ROS 2 로 바뀐 새 LeKiwi 로봇 지원** — 로봇 설정의 [연결 확인] 이 기존 LeKiwi(lerobot 호스트)인지 새 ROS 2 로봇(웹 게이트웨이 `:8080`)인지 알아서 구분합니다. 기존 LeKiwi 는 지금처럼 동작합니다.
+  - [로봇 켜기/끄기] — 진행 상황을 터미널 창에 보여 줍니다
+  - 팔로워 칼리브레이션(로봇이 꺼져 있어도 시작 가능) · 텔레오퍼레이션 · 데이터 수집 · 추론 · 리플레이
+  - 비상 정지 풀기, 안전 장치에 막히면 이유와 함께 멈춤, 다른 PC 가 조작 중이면 막기, [토크 해제] (접고 힘 빼기)
+  - AP 모드 전환을 로봇 게이트웨이로 — 전환 중에는 [로봇 켜기/끄기] 를 막습니다
+  - 로봇 설정 '3. Lekiwi (카메라)' — 전방 · 손목 카메라 미리보기와 카메라 노드 상태
+  - 로봇에 ZMQ 데이터 노드(`lekiwi_zmq_host`)가 올라가 있어야 합니다
+
+### 수정
+- AP 모드 [노트북을 이 AP 에 연결] 뒤 노트북이 공유기 대신 로봇 AP 를 스스로 잡던 문제 수정
+- 와이파이 설정이 새로 만든 로봇에서 SSH 키를 다시 등록하도록 수정
+
+### 설치
+```bash
+wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.8/physical-labs_0.6.0-0.1.8_amd64.deb
+sudo apt install ./physical-labs_0.6.0-0.1.8_amd64.deb
+```
+SHA256: `08ace2824196976ff12ba775d1950e950ac10a846d90714fda310ef71ecb8d85`
+
+---
+
 # Physical Labs v0.6.0-0.1.6 (Linux)
 
 ### 새 기능
