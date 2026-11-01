@@ -113,6 +113,8 @@ sudo apt install --reinstall ./physical-labs_<새버전>_amd64.deb
 
 기존 가상환경(`/opt/physical-labs/venv`)은 유지되며 pip 가 변경분만 설치합니다 (보통 1~3분).
 
+> 같은 버전을 다시 받을 때도 (예: 2026-11-01 재배포한 0.2.0) 이 명령 그대로입니다 — `--reinstall` 이 없으면 apt 가 "이미 최신" 으로 건너뜁니다.
+
 ### 강제 재설치 (가상환경부터 다시)
 
 ```bash

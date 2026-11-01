@@ -1,12 +1,12 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.2.0](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.2.0) (2026-11-01)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.2.0](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.2.0) (2026-11-01 재배포)
 >
 > ```bash
 > wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.2.0/physical-labs_0.6.0-0.2.0_amd64.deb
 > sudo apt install ./physical-labs_0.6.0-0.2.0_amd64.deb
 > ```
-> **모터 셋업 중앙 이동 통과 기준 ±5 → ±10** — 중앙 근처에서 멈췄는데도 '실패' 로 나오던 경우가 줄어듭니다.
-> 0.1.9 의 모든 기능(ROS 2 LeKiwi · SO-102 · 데이터 수집 업로드 수정)이 그대로 들어 있습니다. 사용 설명서: https://roboseasy.ai/docs/physical-labs
-> SHA256 `eb82c75489af9d5e1b8c9943ec2cd05686f27e882a387c0e14768abb9fe89e0a`.
+> **새 A-Go(ROS 2 LeKiwi)에서 엔드이펙터 탭을 씁니다** (Joint · XYZ · Teaching Control · Motion Record/Replay), **Teaching Control 재생 재현율 개선** (SO-101 · A-Go — 중력 처짐 보정 · 녹화 30 fps · 속도 슬라이더가 3D · 실물 · 녹화 속도를 함께 바꿈).
+> 2026-11-01 오후에 같은 0.2.0 으로 다시 올렸습니다 — 오전 0.2.0 을 설치했다면 `sudo apt install --reinstall ./physical-labs_0.6.0-0.2.0_amd64.deb`. 사용 설명서: https://roboseasy.ai/docs/physical-labs
+> SHA256 `284496ec8441876b92c4ee16f8dfb46018d29d8bc1d74d40e3171f36cd7fe1a8`.
 > Windows 최신은 [v0.6.0-0.1.7](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.7) (2026-10-22) —
 > [physical-labs-setup_0.6.0-0.1.7_win64.exe](https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.7/physical-labs-setup_0.6.0-0.1.7_win64.exe),
 > SHA256 `7988c028ba155571284f5212d20f77d3f8e716fcdbb8269b898967f2cff6a775`.
