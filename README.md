@@ -1,12 +1,12 @@
-> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.2.0](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.2.0) (2026-11-01 재배포)
+> ## 🆕 최신 Linux 릴리즈: [v0.6.0-0.2.1](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.2.1) (2026-11-23)
 >
 > ```bash
-> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.2.0/physical-labs_0.6.0-0.2.0_amd64.deb
-> sudo apt install ./physical-labs_0.6.0-0.2.0_amd64.deb
+> wget https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.2.1/physical-labs_0.6.0-0.2.1_amd64.deb
+> sudo apt install ./physical-labs_0.6.0-0.2.1_amd64.deb
 > ```
-> **새 A-Go(ROS 2 LeKiwi)에서 엔드이펙터 · 워크스페이스(Yolo + Pick&Place)가 열립니다**, **Teaching Control 재생 재현율 개선** (SO-101 · A-Go), **로봇 저장 시 robot id 중복 오류 수정** (예: lekiwi05).
-> 2026-11-01 저녁에 같은 0.2.0 으로 다시 올렸습니다 — 그 전 0.2.0 을 설치했다면 `sudo apt install --reinstall ./physical-labs_0.6.0-0.2.0_amd64.deb`. 사용 설명서: https://roboseasy.ai/docs/physical-labs
-> SHA256 `9ead9879f478b763c46f082c793bf449dee05412f29fc5ee7ff94e02456ffbf4`.
+> **워크스페이스 "물류지능화"** (블록을 이어 만드는 흐름 — 새 A-Go), **Dual SO-102 기종 추가**, **YOLO-ACT 수집 · 학습 · 추론**, **클라우드 GPU 학습**, **학습 조기 종료 · 재개 수정**.
+> 자세한 내용은 [RELEASE_NOTES.md](RELEASE_NOTES.md). 사용 설명서: https://roboseasy.ai/docs/physical-labs
+> SHA256 `81a8f96979c84f749abe55d28574471758a94c818db46cb134326f12244379cf`.
 > Windows 최신은 [v0.6.0-0.1.7](https://github.com/roboseasy/physical-labs-app-deploy/releases/tag/v0.6.0-0.1.7) (2026-10-22) —
 > [physical-labs-setup_0.6.0-0.1.7_win64.exe](https://github.com/roboseasy/physical-labs-app-deploy/releases/download/v0.6.0-0.1.7/physical-labs-setup_0.6.0-0.1.7_win64.exe),
 > SHA256 `7988c028ba155571284f5212d20f77d3f8e716fcdbb8269b898967f2cff6a775`.
